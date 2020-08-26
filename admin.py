@@ -516,7 +516,7 @@ def productos():
                     descripcion = request.form["descripcion"]
                     costoUnitario = float(request.form["costoUnitario"])
                     precioVenta = float(request.form["precioVenta"])
-                    patente = int(request.form["patente"])
+                    patente = request.form["patente"]
                     id_producto = int(request.form["id_producto"])
                     data2 = {
                         "id_producto": id_producto,
@@ -551,7 +551,7 @@ def productos():
                     descripcion = request.form["descripcion"]
                     costoUnitario = float(request.form["costoUnitario"])
                     precioVenta = float(request.form["precioVenta"])
-                    patente = int(request.form["patente"])
+                    patente = request.form["patente"]
                     id_producto = int(request.form["id_producto"])
                     nombre_foto = foto.filename
                     logicProductos = productoLogic()

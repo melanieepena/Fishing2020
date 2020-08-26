@@ -116,7 +116,7 @@ class productoLogic(Logic):
         database = self.get_databaseXObj()
         sql = (
             "update fishingdb.productos"
-            + f" set nombre ='{name}', descripcion='{descripcion}', costo_unitario={costo_unitario}, precio_venta={precio_venta}, patente={patente}"
+            + f" set nombre ='{name}', descripcion='{descripcion}', costo_unitario={costo_unitario}, precio_venta={precio_venta}, patente='{patente}'"
             + f" where id = {id_producto};"
         )
         rows = database.executeNonQueryRows(sql)

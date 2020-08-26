@@ -161,7 +161,7 @@
                             <input class="form-control mb-1" required maxlength="100" pattern="[A-Za-z\s]+" title="Por favor, utilice unicamente letras" placeholder="Nombre" type="text" id="nombre" name="nombre" value="{{data2["nombre"]}}">
                             <input class="form-control mb-1" placeholder="Costo unitario"  pattern="\d+(\.\d{2})?" type="text" required name="costoUnitario" id="costoUnitario" value="{{data2["costo_unitario"]}}">
                             <input class="form-control mb-1" placeholder="Precio de venta"  pattern="\d+(\.\d{2})?" type="text" required name="precioVenta" id="precioVenta" step="0.01" value="{{data2["precio_venta"]}}">
-                            <input class="form-control mb-1" placeholder="No. Patente:" type="number" required maxlength="20" name="patente" id="patente" value="{{data2["patente"]}}">
+                            <input class="form-control mb-1" placeholder="No. Patente:" type="number" maxlength="20" name="patente" id="patente" value="{{data2["patente"]}}">
                             <br>
                             <input type="file" name="fileToUpload" id="fileToUpload" accept="image/*">
                           </div>

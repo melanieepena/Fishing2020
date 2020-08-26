@@ -157,7 +157,7 @@
                                                 <input class="form-control mb-1" placeholder="Nombre" required maxlength="100" pattern="[A-Za-z\s]+" title="Por favor, utilice unicamente letras" type="text" id="nombre" name="nombre" required>
                                             <input class="form-control mb-1" placeholder="Costo unitario"  pattern="\d+(\.\d{2})?" type="number" name="costoUnitario" id="costoUnitario" step="0.01" >
                                             <input class="form-control mb-1" placeholder="Precio de venta"  pattern="\d+(\.\d{2})?" type="number" name="precioVenta" id="precioVenta" step="0.01">
-                                            <input class="form-control mb-1" placeholder="No. Patente:"  maxlength="20" type="number" name="patente" id="patente"required>
+                                            <input class="form-control mb-1" placeholder="No. Patente:"  maxlength="20" type="number" name="patente" id="patente">
                                             <br>
                                             <input type="file" name="fileToUpload" id="fileToUpload" accept="image/*">
                                             </div>
@@ -205,7 +205,7 @@
                                                 <input class="form-control mb-1" placeholder="Nombre" required maxlength="100" pattern="[A-Za-z\s]+" title="Por favor, utilice unicamente letras" type="text" id="nombre" name="nombre" required value="{{data2["nombre"]}}">
                                                 <input class="form-control mb-1" placeholder="Costo unitario"  pattern="\d+(\.\d{2})?" type="number" name="costoUnitario" id="costoUnitario" value="{{data2["costo_unitario"]}}" step="0.01" >
                                                 <input class="form-control mb-1" placeholder="Precio de venta"  pattern="\d+(\.\d{2})?" type="number" name="precioVenta" id="precioVenta" value="{{data2["precio_venta"]}}" step="0.01">
-                                                <input class="form-control mb-1" placeholder="No. Patente:" required maxlength="20" type="number" name="patente" id="patente"required value="{{data2["patente"]}}">
+                                                <input class="form-control mb-1" placeholder="No. Patente:" maxlength="20" type="number" name="patente" id="patente" value="{{data2["patente"]}}">
                                                 <br>
                                                 <input type="file" name="fileToUpload" id="fileToUpload" accept="image/*">
                                                 </div>
