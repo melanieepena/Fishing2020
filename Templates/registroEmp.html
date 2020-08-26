@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+    
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Fishing | Registro</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="static/t2/assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="static/t2/assets/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="static/t2/assets/css/form-elements.css">
+        <link rel="stylesheet" href="static/t2/assets/css/style.css">
+        <link rel="stylesheet" href="static/css/main.css">
+
+        <!--==========================Icono de barra==============================================================-->
+        <link rel="shortcut icon" href="static/t2/assets/ico/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" sizes="114x114" href="static/t2/assets/ico/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="static/t2/assets/ico/apple-touch-icon-144x144.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="static/t2/assets/ico/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" href="static/t2/assets/ico/apple-touch-icon.png" />
+        <!--==========================Icono de barra==============================================================-->
+
+
+    </head>
+
+    <body>
+        <div class="container-login100">
+		<!-- Top menu -->
+            <nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="index.html">BootZard - Bootstrap Wizard Template</a>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="top-navbar-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <span class="li-text" style="color: witw">
+                                    ¿No buscas emprender? Registra tu tu perfil como inversionista
+                                </span> 
+                                <a href="/signUpInversor" style="color: #2a3d5b"><strong>aquí</strong></a> 
+                                <span class="li-text">
+                                    
+                                
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Top content -->
+            <div class="top-content">
+                <div class="container">
+                    
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 text">
+                            <h1>Únete a <strong style="color:#2a3d5b">Fishing</strong> hoy</h1>
+                            <div class="description">
+                                <p>
+                                An ocean full of great ideas
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 form-box">
+                            <form role="form" action="/signUpEmprendedor" method="post" class="f1" enctype="multipart/form-data" >
+
+                                <h3>Emprendedor</h3>
+                                <p style="color: red">{{ errorMessage }}</p>
+
+                                    <div class="f1-steps">
+                                        <div class="f1-progress">
+                                            <div class="f1-progress-line" data-now-value="16.66" data-number-of-steps="" style="width: 16.66%;"></div>
+                                        </div>
+                                        <div class="f1-step active">
+                                            <div class="f1-step-icon"><i class="fa fa-key"></i></div>
+                                            <p>Cuenta</p>
+                                        </div>
+                                        <div class="f1-step">
+                                            <div class="f1-step-icon"><i class="fa fa-user"></i></div>
+                                            <p>Emprendedor</p>
+                                        </div>
+                                        <div class="f1-step">
+                                            <div class="f1-step-icon"><i class="fa fa-user"></i></div>
+                                            <p>Información</p>
+                                        </div>
+
+                                    </div>
+                                
+
+
+                                <fieldset>
+                                    <br>
+                                    <h4>Configura tu cuenta:</h4><br>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="f1-last-name">Usuario</label>
+                                        Usuario:<br>
+                                        <input type="text" class="f1-last-name form-control" name="user" id="user">
+                                        <p style="color: red">{{ errorMessage }}</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="f1-last-name">Password</label>
+                                        Contraseña:<br>
+                                        <input type="password" class="f1-last-name form-control" name="password" id="password" >
+                                    </div>
+                                    <div class="f1-buttons">
+                                        <button type="button" class="btn btn-next">Siguiente</button>
+                                    </div>
+                                </fieldset>
+
+                                <fieldset>
+                                    <br>
+                                    <h4>Dinos quién eres:</h4><br>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="f1-first-name">Nombre</label>
+                                        Nombre:<br>
+                                        <input type="text" class="f1-last-name form-control" name="nombre" id="nombre" required pattern="[A-Za-z\s]+" title="Por favor, utilice unicamente letras">
+                                    </div>
+
+                                    <div class="form-group">
+                                    Seleccione una foto de perfil:
+                                        <input type="file" name="fileToUpload" id="fileToUpload" accept="image/*">
+                                    </div>
+                                
+                                    <div class="form-group">
+                                        <label class="sr-only" for="f1-about-yourself">Biografia</label>
+                                        Biografía:<br>
+                                        <textarea name="bio" placeholder="Cuéntanos un poco sobre ti" class="f1-about-yourself form-control" id="bio" required maxlength="500"></textarea>
+                                    </div>
+
+                                    <div class="f1-buttons">
+                                        <button type="button" class="btn btn-previous">Anterior</button>
+                                        <button type="button" class="btn btn-next">Siguiente</button>
+                                        <input type="hidden" name="formId" id="formId" value="1">
+                                    </div>
+                                </fieldset>
+
+                                <fieldset>
+                                    <br>
+                                    <h4>Información:</h4><br>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="f1-first-name">Email</label>
+                                        Email:<br>
+                                        <input type="email" class="f1-last-name form-control"   name="email" id="email" required maxlength="150">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="f1-last-name">Pais</label>
+                                        País:<br>
+                                        <input type="text" class="f1-last-name form-control" name="country" id="country" required maxlength="100" pattern="[A-Za-z\s]+" title="Por favor, utilice unicamente letras">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="sr-only" for="f1-last-name">Ciudad</label>
+                                        Ciudad:<br>
+                                        <input type="text" class="f1-last-name form-control" name="city" id="city" required maxlength="100" pattern="[A-Za-z\s]+" title="Por favor, utilice unicamente letras">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="sr-only" for="f1-about-yourself">Teléfono</label>
+                                        Teléfono:<br>
+                                        <input type="number" class="f1-last-name form-control" name="phone" id="phone" required maxlength="25">
+                                    </div>
+
+                                    <div class="f1-buttons">
+                                        <button type="button" class="btn btn-previous">Anterior</button>
+                                        <button type="submit" class="btn btn-submit">Crear cuenta</button>
+                                        <input type="hidden" name="formId" id="formId" value="1">
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                        
+                </div>
+            </div>
+
+
+            <!-- Javascript -->
+            <script src="static/t2/assets/js/jquery-1.11.1.min.js"></script>
+            <script src="static/t2/assets/bootstrap/js/bootstrap.min.js"></script>
+            <script src="static/t2/assets/js/jquery.backstretch.min.js"></script>
+            <script src="static/t2/assets/js/retina-1.1.0.min.js"></script>
+            <script src="static/t2/assets/js/script.js"></script>
+            
+            <!--[if lt IE 10]>
+                <script src="assets/js/placeholder.js"></script>
+            <![endif]-->
+        </div>
+    </body>
+
+</html>
+<!--
+    <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Registra tu idea de Negocios</h1> 
+    <form action="/signUpEmprendedor" method="POST">
+      
+      Usuario: <br />
+      <input type="text" name="user" id="user" />
+      <p style="color: red">{{ errorMessage }}</p>
+      
+        Nombre: <br />
+      <input type="text" name="nombre" id="nombre" value={{namex}} />
+      <br /><br />
+      Contraseña: <br />
+      <input type="password" name="password" id="password" />
+      <br /><br />
+      E-mail: <br />
+      <input type="email" name="email" id="email" value={{emailx}} />
+      <br /><br />
+        Pais: <br />
+      <input type="text" name="country" id="country" value={{countryx}} />
+      <br /><br />
+        Ciudad: <br />
+      <input type="text" name="city" id="city" value={{cityx}} />
+      <br /><br />
+      Fecha de fundación: <br />
+      <input type="date" name="fundationDate" id="fundationDate" />
+      <br /><br />
+      Teléfono: <br />
+      <input type="text" name="phone" id="phone" value={{phonex}} />
+      <br /><br />
+      Eslogan: <br />
+      <input type="text" name="eslogan" id="eslogan" value={{esloganx}} />
+      <br /><br />
+      Estado: <br />
+      <select name="estado" id="estado">
+        <option value="Huevo">Huevo</option>
+        <option value="Pez Dorado">Pez dorado</option>
+        <option value="tiburon">Tiburón</option>
+      </select>
+      <br /><br />
+      Descripción: <br />
+      <input type="text" name="description" id="description" value={{descx}} />
+      <br /><br />
+      <input type="submit" value="Create Acount" />
+    </form>
+  </body>
+</html>
+-->

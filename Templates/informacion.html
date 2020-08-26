@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="static/emprendimiento/vendors/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="static/emprendimiento/vendors/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="static/emprendimiento/vendors/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="static/emprendimiento/vendors/linericon/style.css">
+    <link rel="stylesheet" href="static/emprendimiento/vendors/owl-carousel/owl.theme.default.min.css">
+    <link rel="stylesheet" href="static/emprendimiento/vendors/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="static/emprendimiento/css/style.css">
+
+    <title>Informacion del emprendimiento</title>
+
+    <!--==========================Icono de barra==============================================================-->
+    <link rel="shortcut icon" href="static/t2/assets/ico/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" sizes="114x114" href="static/t2/assets/ico/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="static/t2/assets/ico/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="static/t2/assets/ico/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" href="static/t2/assets/ico/apple-touch-icon.png" />
+    <!--==========================Icono de barra==============================================================-->
+
+
+</head>
+
+<body>
+    <!--================ Start Header Menu Area =================-->
+    <header class="header_area">
+        <div class="main_menu">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+            <a class="navbar-brand logo_h" href="index.html"><img src="" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
+                {% if not vistaEmprendedor %}
+                <li class="nav-item active"><a class="nav-link" href="/emprendimientoInicioInversionista">Inicio</a></li>
+                {%endif%}
+                {% if  vistaEmprendedor %}
+                <li class="nav-item active"><a class="nav-link" href="/emprendimientoInicio">Inicio</a></li>
+                {%endif%}
+                {% if  vistaEmprendedor %}
+                <li class="nav-item active"><a class="nav-link" href="/quienes_somos">Historia</a></li>
+                {%endif%}
+                {% if not vistaEmprendedor %}
+                <li class="nav-item active"><a class="nav-link" href="/quienes_somosInv">Historia</a></li>
+                {%endif%}
+                {% if  vistaEmprendedor %}
+                <li class="nav-item active"><a class="nav-link" href="/registroProductos">Productos</a></li>
+                {%endif%}
+                {% if not vistaEmprendedor %}
+                <li class="nav-item active"><a class="nav-link" href="/registroProductosInv">Productos</a></li>
+                {%endif%}
+                {% if  vistaEmprendedor %}
+                <li class="nav-item active"><a class="nav-link" href="/informacion">Información</a></li>
+                {%endif%}
+                {% if not vistaEmprendedor %}
+                <li class="nav-item active"><a class="nav-link" href="/infoEmprendimiento">Información</a></li>
+                {%endif%}
+                </ul>
+
+                <ul class="nav-shop">
+                {% if  vistaEmprendedor %}
+                <li class="nav-item"><a class="button button-header" href="emprendedorProfile">Volver a mi perfil</a></li>
+                {%endif%}
+                {% if not vistaEmprendedor %}
+                <li class="nav-item"><a class="button button-header" href="/InicioInv">Volver al inicio</a></li>
+                {%endif%}
+                </ul>
+            </div>
+            </div>
+        </nav>
+        </div>
+    </header>
+    <!--================ Start Header Menu Area =================-->
+    <!-- ================ start banner area ================= -->	
+		<div class="container h-1">
+		<br><br>
+			<div class="blog-banner">
+				<div class="text-center">
+					<h1>Información del emprendimiento</h1>
+				</div>
+			</div>
+        </div>
+	<!-- ================ end banner area ================= -->
+
+    <!--================Checkout Area =================-->
+
+    <section class="order_details section-margin--small">
+        <div class="container">          
+            <div class="order_details_table">
+                <h2>Información financiera</h2>
+                <div class="table-responsive">
+                    <!--TABLA FINANCIERA-->
+                    {% for registro in data2 %}    
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Información</th>
+                                    <th scope="col"></th>
+                                    <th scope="col">Dato</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <p>Fecha de fundación</p>
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+                                        <p>{{registro["fecha_fundacion"]}}</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Inversión inicial</p>
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+                                        <p>$ {{registro["inversion_inicial"]}}</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Ventas del año pasado</p>
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+                                        <p>$ {{registro["venta_año_anterior"]}}</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p></p>
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+                                        <p></p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br>
+                        <!--BOTON MODIFICAR FINANCIERA-->
+                        {%if vistaEmprendedor%}
+                        <button class="button button-paypal button--active" type="submit" value="delete" data-toggle="modal" data-target="#modificarInfo" >
+                            Modificar Informacion
+                        </button>
+                        {%endif%}
+                    {% endfor %}
+                    
+                    {%if vistaEmprendedor%}
+                        <br><br>
+                        <h2>Historial de ofertas</h2>
+                        
+                        <!--TABLA OFERTAS-->
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Especificaciones</th>
+                                    <th scope="col">Valor</th>
+                                    <th scope="col">Porcentaje</th>
+                                    <th scope="col">Fecha</th>
+                                </tr>
+                                
+                            </thead>
+                            {% for registro in ofertas %}
+                                <tr>
+                                    <td>
+                                        <p>{{registro["especificaciones"]}}</p>
+                                    </td>
+                                    <td>
+                                        <p>$ {{registro["oferta"]}}</p>
+                                    </td>
+                                    <td>
+                                        <p>{{registro["porcentaje"]}} %</p>
+                                    </td>
+                                    <td>
+                                        <p>{{registro["fecha"]}}</p>
+                                    </td>
+                                </tr>
+                                
+                            {% endfor %}
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                        <br><br>
+
+                        <!--BOTON AGREGAR OFERTA-->
+                        <button class="button button-paypal button--active" type="submit" data-toggle="modal" value="insert" data-target="#agregar" >
+                            Agregar
+                        </button>>
+                        
+                            {% if ultima_oferta != None %}
+                            <br>
+                            <form action="/informacion" method="POST">
+                                <button class="button button-paypal" type="submit" value="delete">Eliminar último registro</button>
+                                <input type="hidden" name="formId" id="formId" value="7">
+                                <input type="hidden" name="id_historial" id="id_historial" value="{{ultima_oferta["id"]}}">
+                            </form>
+                            <br>
+                            <!--BOTON ACTUALIZAR OFERTA-->
+                            <button class="button button-paypal button--active" type="submit" data-toggle="modal" value="update" data-target="#modultregistro" >
+                                Modificar último registro
+                            </button>
+                            {% endif %}
+                        {%endif%}
+
+                        {%if not vistaEmprendedor%}
+                            {% if ultima_oferta != None %}
+                            <br><br>
+                            <h2>Oferta actual</h2>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Especificaciones</th>
+                                        <th scope="col">Valor</th>
+                                        <th scope="col">Porcentaje</th>
+                                        <th scope="col">Fecha</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <p>{{ultima_oferta["especificaciones"]}}</p>
+                                        </td>
+                                        <td>
+                                            <p>$ {{ultima_oferta["oferta"]}}</p>
+                                        </td>
+                                        <td>
+                                            <p>{{ultima_oferta["porcentaje"]}} %</p>
+                                        </td>
+                                        <td>
+                                            <p>{{ultima_oferta["fecha"]}}</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            {% endif %}
+                        </table>
+                        {%endif%}
+
+                    </div>
+                </div>
+
+                <br><br>
+
+                <div class="billing_details">
+                    <div class="row">
+                        <!--Correo-->
+                        {%if vistaInversor%}
+                        <div class="col-lg-8">
+                            <h3>Contacta a los fundadores de este emprendimiento</h3>
+                            <p>{{message1}}</p>
+                            <form action="/infoEmprendimiento" method="POST">
+                                <textarea name="message" id="message" rows="12"
+                                    cols="82">Escribe aquí el correo que deseas enviar</textarea>
+                                <br><br><button class="button button-paypal" type="submit" value="send"> Enviar</button>
+                            </form>
+                            <br>
+                            <img src="static/emprendimiento/img/gallery/RecuerdaInver.png" width="740" alt="post"> 
+                        </div>
+                        {%endif%}
+
+                        <!--Correo-->
+
+                        {%if vistaEmprendedor%}
+                        <div class="col-lg-8">
+                            <img src="static/emprendimiento/img/gallery/EmprendedorRecuerda.png" width="740" alt="post">
+                        </div>
+                        {%endif%}
+
+                        <div class="col-lg-4">
+                            <div class="order_box">
+                                {% for registro in data %}
+                                <h2>Contactos</h2>
+                                <ul class="list">
+                                    <li><a>
+                                            <h4>Telefono <span class="middle"></span> <span
+                                                    class="last">{{registro["telefono"]}}</span>
+                                                <h4>
+                                        </a></li>
+                                    <li><a>
+                                            <h4>Email <span class="middle"></span> <span
+                                                    class="last">{{registro["email"]}} </span>
+                                                <h4>
+                                        </a></li>
+                                    <br>
+                                </ul>
+                                <h2>Reded sociales</h2>
+                                <ul class="list">
+                                    {% if facebook != None %}
+                                    <li><a href="{{registro["facebook"]}}" target="_blank">
+                                            <h4>Facebook <span class="middle"></span> 
+                                            </h4>
+                                        </a></li>
+                                    {% endif %}
+                                    {% if instagram != None %}
+                                    <li><a href="{{registro["instagram"]}}" target="_blank">
+                                            <h4>Instagram <span class="middle"></span> 
+                                            </h4>
+                                        </a></li>
+                                    {% endif %}
+                                    {% if youtube != None %}
+                                    <li><a href="{{registro["youtube"]}}" target="_blank">
+                                            <h4>Youtube <span class="middle"></span> 
+                                            </h4>
+                                        </a></li>
+                                    {% endif %}
+                                    <br>
+                                </ul>
+                                <!--BOTON MODIFICAR CONTACTOS-->
+                                {%if vistaEmprendedor%}
+                                    <button class="button button-paypal button--active" type="submit" value="modificar" data-toggle="modal" data-target="#modificarInfoContacto" >
+                                        Modificar Informacion
+                                    </button>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+    <!--================ Start footer Area  =================-->
+    <!-- Javascript control de errores --> 
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
+    <script src="static/assets/js/validation.js"></script>
+    <!--POPUP: bootstrap-->
+    <script type="text/javascript" src="static/perfil/assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+
+<!--================ Start footer Area  =================-->	
+{% for registro in data3 %}	
+	<footer class="footer">
+        <div class="footer-area">
+            <div class="container">
+                <div class="row section_gap">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="single-footer-widget tp_widgets">
+                            <h4 class="footer_title large_title">Descripcion</h4>
+                            {% for registro in data4 %}
+                                <p>
+                                    {{registro["descripcion"]}}
+                                </p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="offset-lg-1 col-lg-2 col-md-6 col-sm-6">
+                        <div class="single-footer-widget tp_widgets">
+                            <h4 class="footer_title">Redes sociales</h4>
+                            <ul class="list">
+                                {% if facebook != None %}
+                                    <li><a href="{{registro["facebook"]}}" target="_blank">Facebook</a></li>
+                                {% endif %}
+                                {% if instagram != None %}
+                                    <li><a href="{{registro["instagram"]}}" target="_blank">Instagram</a></li>
+                                {% endif %}
+                                {% if youtube != None %}
+                                    <li><a href="{{registro["youtube"]}}" target="_blank">Youtube</a></li>
+                                {% endif %}
+                            </ul> 
+						</div>
+					</div>
+					<div class="offset-lg-1 col-lg-3 col-md-6 col-sm-6">
+						<div class="single-footer-widget tp_widgets">
+							<h4 class="footer_title">Contact Us</h4>
+							<div class="ml-40">
+								
+								<p class="sm-head">
+									<span class="fa fa-phone"></span>
+									Numero de telefono
+								</p>
+								<p>
+									{{registro["telefono"]}}
+								</p>
+	
+								<p class="sm-head">
+									<span class="fa fa-envelope"></span>
+									Email
+								</p>
+								<p>
+									{{registro["email"]}}
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="row d-flex">
+					<p class="col-lg-12 footer-text text-center">
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> Fishing 2020 | An ocean full of great ideas <i class="fa fa-heart" aria-hidden="true"></i> by <a>Fishing</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+				</div>
+			</div>
+		</div>
+	</footer>
+{% endfor %}
+<!--================ End footer Area  =================-->
+
+
+
+    <!--POPUP: Modificar informacion de contacto-->
+    <div class="modal fade" id="modificarInfoContacto" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modifica tu información</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/informacion" method="POST">
+                        <div class="field">
+                            <label class="" for="emailUP">Email</label>
+                            <div class="control">
+                                <input type="email" required id="emailUP" name="emailUP" value="{{data[0]["email"]}}">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="" for="telefonoUP">Teléfono</label>
+                            <div class="control">
+                                <input type="number" required maxlength="25" id="telefonoUP" name="telefonoUP" value="{{data[0]["telefono"]}}">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="" for="facebookUP">Facebook</label>
+                            <div class="control">
+                                <input type="url" id="facebookUP" name="facebookUP" value="{{data[0]["facebook"]}}">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="" for="instagramUP">Instagram</label>
+                            <div class="control">
+                                <input type="url" maxlength="900" id="instagramUP" name="instagramUP" value="{{data[0]["instagram"]}}">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="" for="youtubeUP">Youtube</label>
+                            <div class="control">
+                                <input type="url" maxlength="900" id="youtubeUP" name="youtubeUP" value="{{data[0]["youtube"]}}">
+                            </div>
+                        </div>
+                        <br>
+                        <button type="submit" value="Aceptar Cambios" class="btn btn-primary">Aplicar cambios</button>
+                            <input type="hidden" id="formId" name="formId" value="4">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--POPUP: Insertar Oferta-->
+        <div class="modal fade" id="agregar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" >
+                    <h4 class="modal-title" id="exampleModalLongTitle">Nueva oferta</h4>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="container">
+                        <form action="/informacion" method="POST">
+                            Especificaciones: <br>
+                            <textarea  name="especificaciones" required id="especificaciones" rows="10" cols="25" title="Por favor, utilice unicamente letras" maxlength="300" ></textarea><br>
+                            Oferta: <br>
+                            $ <input type="number" step="0.01" required id="oferta" name="oferta"><br>
+                            Porcentaje: <br>
+                            <input type="number" required min="0" max="100" id="porcentaje" name="porcentaje"> % <br><br>
+
+                            <button type="submit" value="Agregar" class="btn btn-primary">Agregar</button>
+                            <input type="hidden" id="formId" name="formId" value="6">
+
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        </form>   
+                    </div>
+                </div>   
+            </div>
+        </div>
+    </div>
+    
+
+    <!--Modificar oferta-->
+    <div class="modal fade" id="modultregistro" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" >
+                    <h4 class="modal-title" id="exampleModalLongTitle">Modifica tu última oferta</h4>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <form action="/informacion" method="POST">
+                            Especificaciones: <br>
+                            <textarea  name="especificaciones" required id="especificaciones" rows="10" cols="30" maxlength="300">{{ultima_oferta["especificaciones"]}}</textarea> <br><br>
+                            Oferta: <br>
+                            $ <input type="number" step="0.01" required id="oferta" required name="oferta" value="{{ultima_oferta["oferta"]}}"><br><br>
+                            Porcentaje: <br>
+                            <input type="number" id="porcentaje" min="0" max="100" required name="porcentaje" value="{{ultima_oferta["porcentaje"]}}"> % <br><br>
+                            
+                            <button type="submit" value="Agregar" class="btn btn-primary">Aplicar cambios</button>
+                            <input type="hidden" id="formId" name="formId" value="9">
+                            <input type="hidden" id="id_historial" name="id_historial" value="{{ultima_oferta["id"]}}">
+
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        </form>
+                    </div>
+                </div>   
+            </div>
+        </div>
+    </div>
+
+    <!--POPUP: Modificar informacion financiera -->
+        <div class="modal fade" id="modificarInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modifica tu información</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <div class="modal-body">
+                <form action="/informacion" method="POST">
+                    <div class="field">
+                        <label class="" for="fecha_fundacionUP">Fecha de fundación</label>
+                            <div class="control">
+                                <input type="date" required id="fecha_fundacionUP" name="fecha_fundacionUP"
+                                value="{{data2[0]["fecha_fundacion"]}}"><br><br>
+                            </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="" for="email">Inversión inicial</label>
+                            <div class="control">
+                                <input type="number" step="0.01" required  id="inversion_inicialUP" name="inversion_inicialUP"
+                                value="{{data2[0]["inversion_inicial"]}}"><br><br>
+                            </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="" for="email">Venta año anterior</label>
+                            <div class="control">
+                                <input type="number" step="0.01" required id="venta_año_anteriorUP" name="venta_año_anteriorUP"
+                                value="{{data2[0]["venta_año_anterior"]}}"><br><br>
+                            </div>
+                    </div>
+                        <button type="submit" value="Agregar" class="btn btn-primary">Aplicar cambios</button>
+                        <input type="hidden" id="formId" name="formId" value="2">
+
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+

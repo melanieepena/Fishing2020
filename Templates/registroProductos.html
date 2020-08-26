@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+{% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Productos</title>
+    
+    <link rel="stylesheet" href="static/emprendimiento/vendors/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="static/emprendimiento/vendors/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="static/emprendimiento/vendors/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="static/emprendimiento/vendors/linericon/style.css">
+    <link rel="stylesheet" href="static/emprendimiento/vendors/owl-carousel/owl.theme.default.min.css">
+    <link rel="stylesheet" href="static/emprendimiento/vendors/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="static/emprendimiento/css/style.css">
+
+    <!--==========================Icono de barra==============================================================-->
+    <link rel="shortcut icon" href="static/t2/assets/ico/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" sizes="114x114" href="static/t2/assets/ico/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="static/t2/assets/ico/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="static/t2/assets/ico/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" href="static/t2/assets/ico/apple-touch-icon.png" />
+    <!--==========================Icono de barra==============================================================-->
+    
+    
+    
+{% endblock head %}
+<!-- Javascript control de errores --> 
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
+    <script src="static/assets/js/validation.js"></script>
+{% block body %}
+    <!--================ Start Header Menu Area =================-->
+        <header class="header_area">
+        <div class="main_menu">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+            <a class="navbar-brand logo_h" href="index.html"><img src="" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
+                {% if vistaEmprendimiento %}
+                <li class="nav-item active"><a class="nav-link" href="/emprendimientoInicioInversionista">Inicio</a></li>
+                {%endif%}
+                {% if not vistaEmprendimiento %}
+                <li class="nav-item active"><a class="nav-link" href="/emprendimientoInicio">Inicio</a></li>
+                {%endif%}
+                {% if not vistaEmprendimiento %}
+                <li class="nav-item active"><a class="nav-link" href="/quienes_somos">Historia</a></li>
+                {%endif%}
+                {% if vistaEmprendimiento %}
+                <li class="nav-item active"><a class="nav-link" href="/quienes_somosInv">Historia</a></li>
+                {%endif%}
+                {% if not vistaEmprendimiento %}
+                <li class="nav-item active"><a class="nav-link" href="/registroProductos">Productos</a></li>
+                {%endif%}
+                {% if vistaEmprendimiento %}
+                <li class="nav-item active"><a class="nav-link" href="/registroProductosInv">Productos</a></li>
+                {%endif%}
+                {% if not vistaEmprendimiento %}
+                <li class="nav-item active"><a class="nav-link" href="/informacion">Información</a></li>
+                {%endif%}
+                {% if vistaEmprendimiento %}
+                <li class="nav-item active"><a class="nav-link" href="/infoEmprendimiento">Información</a></li>
+                {%endif%}
+                </ul>
+
+                <ul class="nav-shop">
+                {% if not vistaEmprendimiento %}
+                <li class="nav-item"><a class="button button-header" href="/emprendedorProfile">Volver a mi perfil</a></li>
+                {%endif%}
+                {% if vistaEmprendimiento %}
+                <li class="nav-item"><a class="button button-header" href="/InicioInv">Volver al inicio</a></li>
+                {%endif%}
+                </ul>
+            </div>
+            </div>
+        </nav>
+        </div>
+    </header>
+    <!--================ End Header Menu Area =================-->
+    <!-- ================ start banner area ================= -->	
+		{% if vistaEmprendimiento %}
+    <div class="container h-1">
+		<br><br>
+			<div class="blog-banner">
+				<div class="text-center">
+					<h1>Productos - Servicios</h1>
+				</div>
+			</div>
+    </div>
+    {% endif %}
+	<!-- ================ end banner area ================= -->
+
+  <!-- ================ Subscribe section start ================= -->		  
+  {% if not vistaEmprendimiento %}
+    
+    <section class="subscribe-position">
+      {% if not mostrar %}
+        <div class="container">
+          <div class="subscribe text-center">
+            <h3>Productos - Servicios</h3><br><br>
+            <p>Llena todos los campos e ingrese una fotografía de su producto o servicio</p>
+            <div id="mc_embed_signup">
+            
+            <!-- ================ Form nuevoProducto  ================= -->
+              <div class="container">  
+                <div align="center">          
+                  <div class="col-md-2 col-lg-10">
+                    <form class="form-contact contact_form" name="nuevoProducto" id="nuevoProducto" action="/registroProductos" method="POST" enctype="multipart/form-data">
+                      <div class="row">
+                        <div class="col-lg-5">
+                          <div class="field">
+                            <input class="form-control mb-1" required maxlength="100" pattern="[A-Za-z\s]+" title="Por favor, utilice unicamente letras" placeholder="Nombre" type="text" id="nombre" name="nombre">
+                            <input class="form-control mb-1" placeholder="Costo unitario"  pattern="\d+(\.\d{2})?" type="text" required name="costoUnitario" id="costoUnitario" >
+                            <input class="form-control mb-1" placeholder="Precio de venta"  pattern="\d+(\.\d{2})?" type="text" required name="precioVenta" id="precioVenta" step="0.01">
+                            <input class="form-control mb-1" placeholder="No. Patente:" type="number"  maxlength="20" name="patente" id="patente">
+                            <br>
+                            <input type="file" name="fileToUpload" id="fileToUpload" accept="image/*">
+                          </div>
+                        </div>
+                        <div class="col-lg-7">
+                          <div class="field">
+                            <textarea class="form-control different-control w-100" required name="descripcion" maxlength="300" placeholder="Descripción" id="descripcion" cols="30" rows="10"></textarea>       
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group text-center text-md-right mt-3">
+                          <input class="button button--active button-contactForm" type="submit" value="Registrar">
+                          <input type="hidden" name="formId" id="formId" value="1">
+                      </div>
+                    </form>
+                  </div> 
+                </div>
+              </div> 
+            </div>
+          </div>
+        </div>
+      {% endif %}
+      {% if mostrar %}
+        <div class="container">
+          <div class="subscribe text-center">
+            <h3>Productos - Servicios</h3><br><br>
+            <p>Modifica el producto</p>
+            <div id="mc_embed_signup">
+            
+            <!-- ================ Form nuevoProducto  ================= -->
+              <div class="container">  
+                <div align="center">          
+                  <div class="col-md-2 col-lg-10">
+                    <form name="modiProducto" id="modiProducto" action="/registroProductos" method="POST" enctype="multipart/form-data">
+                      <div class="row">
+                        <div class="col-lg-5">
+                          <div class="field">
+                            <input class="form-control mb-1" required maxlength="100" pattern="[A-Za-z\s]+" title="Por favor, utilice unicamente letras" placeholder="Nombre" type="text" id="nombre" name="nombre" value="{{data2["nombre"]}}">
+                            <input class="form-control mb-1" placeholder="Costo unitario"  pattern="\d+(\.\d{2})?" type="text" required name="costoUnitario" id="costoUnitario" value="{{data2["costo_unitario"]}}">
+                            <input class="form-control mb-1" placeholder="Precio de venta"  pattern="\d+(\.\d{2})?" type="text" required name="precioVenta" id="precioVenta" step="0.01" value="{{data2["precio_venta"]}}">
+                            <input class="form-control mb-1" placeholder="No. Patente:" type="number" required maxlength="20" name="patente" id="patente" value="{{data2["patente"]}}">
+                            <br>
+                            <input type="file" name="fileToUpload" id="fileToUpload" accept="image/*">
+                          </div>
+                        </div>
+                        <div class="col-lg-7">
+                          <div class="field">
+                            <textarea class="form-control different-control w-100" required name="descripcion" maxlength="300" placeholder="Descripción" id="descripcion" cols="30" rows="10">{{data2["descripcion"]}}</textarea>       
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group text-center text-md-right mt-3">
+                          <input class="button button--active button-contactForm" type="submit" value="Modificar">
+                          <input type="hidden" name="formId" id="formId" value="4">
+                          <input type="hidden" name="id_producto" id="id_producto" value="{{data2["id_producto"]}}">
+                          <form action="/registroProductos" method="GET">
+                            <input class="button button--active button-contactForm" type="submit" value="Cancelar">
+                          </form>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div> 
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    </section>
+
+  {% endif %}
+
+<!-- ================ category section start ================= -->		  
+  <section class="section-margin--small mb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-3 col-lg-4 col-md-5">
+          
+          <div class="sidebar-filter">
+            <div class="common-filter">
+              <div class="head"></div>
+                <img class="card-img" src="static/emprendimiento/img/gallery/FishingPublicidad__1.png" width="800" height="700" alt="">
+              </div>            
+            </div>
+          </div>
+        <div class="col-xl-9 col-lg-8 col-md-7">       
+        {% for registro in data %}
+        <section class="lattest-product-area pb-40 category-list">
+            <div class="row">
+                <div class="col-md-6 col-lg-7">
+                    <div class="card text-center card-product">
+                        <div class="card-product__img">
+                            <br><img class="card-img" src="/static/images/productos/{{registro["nombre_foto"]}}" width="250" height="250" alt="">
+                            {% if vistaEmprendimiento %} <!--Guardar-->
+                              <ul class="card-product__imgOverlay">
+                                <form action="/guardar" method="POST">
+                                  <li>
+                                    <button type="submit">
+                                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bookmark-plus" fill=#FFFFFF xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M4.5 2a.5.5 0 0 0-.5.5v11.066l4-2.667 4 2.667V8.5a.5.5 0 0 1 1 0v6.934l-5-3.333-5 3.333V2.5A1.5 1.5 0 0 1 4.5 1h4a.5.5 0 0 1 0 1h-4zm9-1a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1H13V1.5a.5.5 0 0 1 .5-.5z"/>
+                                        <path fill-rule="evenodd" d="M13 3.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0v-2z"/>
+                                      </svg>
+                                    </button>
+                                  </li>
+                                  <input type="hidden" name="id" id="id" value="{{registro["id"]}}">
+                                </form>
+                                {% if not registro["liked"] %}
+                                <form action="/like" method="POST">
+                                  <li>
+                                    <button>
+                                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart" fill=#FFFFFF xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                                      </svg>
+                                    </button>
+                                  </li>
+                                  <input type="hidden" name="id" id="id" value="{{registro["id"]}}">
+                                {% else %}
+                                <form action="/unLike" method="POST">
+                                  <li>
+                                    <button>
+                                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill=#FFFFFF xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                                      </svg>
+                                    </button>
+                                  </li>
+                                  <input type="hidden" name="id" id="id" value="{{registro["id"]}}">
+                                {% endif %}
+                                </form>
+                              </ul>
+                            {% endif %}
+                        </div>
+                  
+                    </div> 
+                </div>
+
+                <!--==========================================================================================================-->
+
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card text-center card-product">
+                  
+                        <div class="card-body">
+                            <h4 class="card-product__title"><a href="#">{{registro["nombre"]}}</a></h4>
+                            <p>Patente: {{registro["patente"]}}</p>
+                            <p>Costo unitario: ${{registro["costo_unitario"]}}</p>
+                            <p>Precio de venta: ${{registro["precio_venta"]}}</p>
+                            <p>Descripción:{{registro["descripcion"]}} </p>
+                            <br>
+                            <p>
+                              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill=#3c4cec xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                              </svg>
+                              {{registro["likes"]}}
+                            </p>
+                            
+                            {% if not vistaEmprendimiento%}
+                              <form action="/registroProductos" method="POST" enctype="multipart/form-data">
+                                  <input type="submit" class="button button-postComment button--active" value="Borrar">
+                                  <input type="hidden" name="formId" id="formId" value="2">
+                                  <input type="hidden" name="id_producto" id="id_producto" value="{{registro["id"]}}">
+                              </form>
+                            
+                              <form action="/registroProductos" method="POST" enctype="multipart/form-data">
+                                  
+                                  <input type="submit" class="button button-postComment button--active" value="Modificar">
+                                
+                                  <input type="hidden" name="formId" id="formId" value="3">
+                                  <input type="hidden" name="id_producto" id="id_producto" value="{{registro["id"]}}">
+                                  <input type="hidden" id="nombre" name="nombre" value="{{registro["nombre"]}}">
+                                  <input type="hidden" name="nombre_foto" id="nombre_foto" value="{{registro["nombre_foto"]}}">
+                                  <input type="hidden" name="descripcion" id="descripcion" value="{{registro["descripcion"]}}">
+                                  <input type="hidden" name="costoUnitario" id="costoUnitario" value="{{registro["costo_unitario"]}}">
+                                  <input type="hidden" name="precioVenta" id="precioVenta" value="{{registro["precio_venta"]}}">
+                                  <input type="hidden" name="patente" id="patente" value="{{registro["patente"]}}">
+                              </form>
+                          {% endif %}
+                  </div>
+                </div>
+              </div>
+        </section>
+      {% endfor %}
+    </div>
+  </section>
+	<!-- ================ category section end ================= -->		  
+  
+
+
+<!-- ================ Subscribe section start ================= -->		  
+
+<!--========== Subscribe section end ================= -->		  
+
+
+    <br><br>
+    
+
+    <!--================ Start footer Area  =================-->	
+  
+  {% for registro in data3 %}	
+	<footer class="footer">
+		<div class="footer-area">
+			<div class="container">
+				<div class="row section_gap">
+					<div class="col-lg-3 col-md-6 col-sm-6">
+						<div class="single-footer-widget tp_widgets">
+							<h4 class="footer_title large_title">Descripcion</h4>
+							{% for registro in data2 %}
+								<p>
+                  {{registro["descripcion"]}}
+								</p>
+							{% endfor %}
+						</div>
+					</div>
+					<div class="offset-lg-1 col-lg-2 col-md-6 col-sm-6">
+						<div class="single-footer-widget tp_widgets">
+							<h4 class="footer_title">Redes sociales</h4>
+							<ul class="list">
+                  {% if facebook != None %}
+                      <li><a href="{{registro["facebook"]}}" target="_blank">Facebook</a></li>
+                  {% endif %}
+                  {% if instagram != None %}
+                      <li><a href="{{registro["instagram"]}}" target="_blank">Instagram</a></li>
+                  {% endif %}
+                  {% if instagram != None %}
+                      <li><a href="{{registro["youtube"]}}" target="_blank">Youtube</a></li>
+                  {% endif %}
+              </ul> 
+						</div>
+					</div>
+					<div class="offset-lg-1 col-lg-3 col-md-6 col-sm-6">
+						<div class="single-footer-widget tp_widgets">
+							<h4 class="footer_title">Contact Us</h4>
+							<div class="ml-40">
+								
+								<p class="sm-head">
+									<span class="fa fa-phone"></span>
+									Numero de telefono
+								</p>
+								<p>
+									{{registro["telefono"]}}
+								</p>
+	
+								<p class="sm-head">
+									<span class="fa fa-envelope"></span>
+									Email
+								</p>
+								<p>
+									{{registro["email"]}}
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="row d-flex">
+					<p class="col-lg-12 footer-text text-center">
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> Fishing 2020 | An ocean full of great ideas <i class="fa fa-heart" aria-hidden="true"></i> by <a>Fishing</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+				</div>
+			</div>
+		</div>
+	</footer>
+{% endfor %}
+
+{% endblock body %}
+
+
+
+</html>

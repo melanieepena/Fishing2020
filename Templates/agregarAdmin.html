@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administradores</title>
+<!--==========================Tabla==============================================================-->
+<link rel="icon" type="image/png" href="table/images/icons/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="static/table/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="static/table/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="static/table/vendor/animate/animate.css">
+<link rel="stylesheet" type="text/css" href="static/table/vendor/select2/select2.min.css">
+<link rel="stylesheet" type="text/css" href="static/table/css/util.css">
+<link rel="stylesheet" type="text/css" href="static/table/css/main.css">
+<!--==========================Estilo en general==============================================================-->
+<link rel="stylesheet" href="static/emprendimiento/vendors/bootstrap/bootstrap.min.css">
+<link rel="stylesheet" href="static/emprendimiento/vendors/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="static/emprendimiento/vendors/themify-icons/themify-icons.css">
+<link rel="stylesheet" href="static/emprendimiento/vendors/linericon/style.css">
+<link rel="stylesheet" href="static/emprendimiento/vendors/owl-carousel/owl.theme.default.min.css">
+<link rel="stylesheet" href="static/emprendimiento/vendors/owl-carousel/owl.carousel.min.css">
+<link rel="stylesheet" href="static/emprendimiento/css/style.css">
+<!--==========================Icono de barra==============================================================-->
+	<link rel="shortcut icon" href="static/t2/assets/ico/favicon.ico" type="image/x-icon" />
+	<link rel="apple-touch-icon" sizes="114x114" href="static/t2/assets/ico/apple-touch-icon-114x114.png" />
+	<link rel="apple-touch-icon" sizes="144x144" href="static/t2/assets/ico/apple-touch-icon-144x144.png" />
+	<link rel="apple-touch-icon" sizes="72x72" href="static/t2/assets/ico/apple-touch-icon-72x72.png" />
+	<link rel="apple-touch-icon" href="static/t2/assets/ico/apple-touch-icon.png" />
+<!--==========================Icono de barra==============================================================-->
+<!-- Javascript control de errores --> 
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
+    <script src="static/perfil/assets/js/validation.js"></script>
+
+</head>
+
+{% block body %}
+<!--================ Start Header Menu Area =================-->
+<header class="header_area">
+    <div class="main_menu">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+            <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
+                    <li class="nav-item"><a class="nav-link" href="/Admin"><font size="2.5">Inicio</font></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/inversionistaAdmin"><font size="2.5">Inversionista</font></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/emprendedorAdmin"><font size="2.5">Emprendedor</font></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/productosAdmin"><font size="2.5">Producto</font></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/fundadoresAdmin"><font size="2.5">Fundador</font></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/EmprendimientoAdmin"><font size="2.5">Emprendimiento</font></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/categoriaAdmin"><font size="2.5">Categoría</font></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/agregarAdmin"><font size="2.5">Administrador</font></a></li>
+                </ul>
+                <ul class="nav-shop">
+                <li class="nav-item"><a class="button button-header" href="/cerrarSesion">Cerrar sesión</a></li>
+                </ul>
+            </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<!--================ End Header Menu Area =================-->
+<div class="container h-1">
+    <br><br>
+    <div class="blog-banner">
+        <div class="text-center">
+            <h1>Administradores</h1>
+        </div>
+    </div>
+</div>
+
+<br><br>
+{% if not verdadero%}
+<section class="subscribe-position">
+    <div class="container">
+        <div class="subscribe text-center">
+            <h4>Para insertar un nuevo administrador ingrese su usuario y su contraseña</h4>
+            <br>
+            <div id="mc_embed_signup">
+                <div class="container">  
+                    <div align="center">          
+                        <div class="col-md-2 col-lg-10">
+                            <form action="/agregarAdmin" class="form-contact contact_form" method="POST" enctype="multipart/form-data">
+                                {% if message %}
+                                    <p style="color: red;">{{message}}</p>
+                                    <br>
+                                {% endif %}
+                                    <div class="field">
+                                        <input class="form-control mb-1" placeholder="Usuario"  type="text" name="usuario" id="usuario" maxlength="100" required>
+                                        <input class="form-control mb-1" placeholder="Contraseña" name="password" id="password" required>
+                                    <br>
+                                    </div>
+                                <div class="form-group text-center text-md-right mt-3">
+                                    <input class="button button-header button--active" type="submit" value="Insertar">
+                                    <input type="hidden" name="formId" id="formId" value="1">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{%endif%}
+{% if verdadero%}
+    <br><br>
+    <p style="color: red;">{{message2}}</p>
+<section class="subscribe-position">
+    <div class="container">
+        <div class="subscribe text-center">
+            <h4>Modifica el usuario Administrador</h4>
+            <br>
+            <div id="mc_embed_signup">
+                <div class="container">  
+                    <div align="center">          
+                        <div class="col-md-2 col-lg-10">
+                            <form action="/agregarAdmin" class="form-contact contact_form" method="POST" enctype="multipart/form-data">
+                                <div class="field">
+                                    <input class="form-control mb-1" placeholder="Usuario"  type="text" name="usuario" id="usuario" maxlength="100" value="{{usuario}}" required>
+                                    <input class="form-control mb-1" placeholder="Contraseña" name="password" id="password" value="{{password}}" required>
+                                    <br>
+                                </div>
+                                <div class="form-group text-center text-md-right mt-3">
+                                    <input class="button button-header button--active" type="submit" value="Modificar">
+                                    <input type="hidden" name="formId" id="formId" value="4" required>
+                                    <input type="hidden" name="id" id="id" value="{{id}}" required>
+                                </div>
+                            </form>
+                            <form action="/agregarAdmin" method="GET">
+                                <input class="button button-header button--active pull-right" type="submit" value="Cancelar">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{%endif%}
+
+<section class="subscribe-position">
+    <div class="container">
+        <div class="subscribe text-center">
+            <p style="color:red">{{massage}}</p>
+            <div class="table100 ver5 m-b-110">
+                <div class="table100-body js-pscroll">
+                    <table>
+                        <tbody>
+                            <tr class="row100 head">
+                                <th>Id</th>
+                                <th>Usuario</th>
+                                <th>Borrar</th>
+                                <th>Modificar</th>
+                            </tr>
+                            {% for registro in data %}
+                            <tr class="row100 body">
+                                <td >{{registro["id"]}}</td>
+                                <td >{{registro["usuario"]}}</td>
+                                <td >
+                                    {% if not registro["borrar"] %}
+                                        <form action="/agregarAdmin" method="POST">
+                                            <button class="button button-header " type="submit" value="delete"><i class="far fa-trash-alt"></i>
+                                                Borrar
+                                            </button>
+                                            <input type="hidden" name="formId" id="formId" value="2">
+                                            <input type="hidden" name="id" id="id" value="{{registro["id"]}}">
+                                        </form>
+                                    {% endif %}
+                                </td>
+                                <td >
+                                    <form action="/agregarAdmin" method="POST">
+                                        <button class="button button-header button--active" type="submit" value="update">
+                                            Modificar
+                                        </button>
+                                        <input type="hidden" name="formId" id="formId" value="3">
+                                        <input type="hidden" name="id" id="id" value="{{registro["id"]}}">
+                                        <input type="hidden" name="usuario" id="usuario" value="{{registro["usuario"]}}">
+                                        <input type="hidden" name="password" id="password" value="{{registro["password"]}}">
+                                    </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock body %}       
+</html>

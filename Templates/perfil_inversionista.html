@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Perfil Inversionista</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <link rel="stylesheet" href="static/emprendimiento/vendors/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="static/emprendimiento/vendors/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="static/emprendimiento/vendors/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="static/emprendimiento/vendors/linericon/style.css">
+    <link rel="stylesheet" href="static/emprendimiento/vendors/owl-carousel/owl.theme.default.min.css">
+    <link rel="stylesheet" href="static/emprendimiento/vendors/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="static/emprendimiento/css/style.css">
+
+    <!--==========================Icono de barra==============================================================-->
+    <link rel="shortcut icon" href="static/t2/assets/ico/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" sizes="114x114" href="static/t2/assets/ico/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="static/t2/assets/ico/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="static/t2/assets/ico/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" href="static/t2/assets/ico/apple-touch-icon.png" />
+    <!--==========================Icono de barra==============================================================-->
+    
+</head>
+
+<body>
+    <!--================ Start Header Menu Area =================-->
+    <header class="header_area">
+        <div class="main_menu">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+            <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
+                
+                <div class="cupon_text d-flex align-items-center">
+                    <u1 class="nav-shop">
+                    <li class="nav-item"><button style="margin: 3px"><i class="ti-search"></i></button></li> 
+                    </u1><br><br>
+                    <form action="/busqueda" method="POST">
+                        <input type="text" id="busqueda" name="busqueda" style="margin: 5px">
+                        <input type="submit" value="buscar" class="button button-header" style="margin-right: 200px">
+                    </form>
+                </div>
+                    <li class="nav-item"><a class="nav-link" href="/InicioInv">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/perfilInversionista">Perfil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/guardadosInv">Guardados</a></li>
+                </ul>
+                <ul class="nav-shop">
+                <li class="nav-item"><a class="button button-header" href="/cerrarSesion">Cerrar sesión</a></li>
+                </ul>
+            </div>
+            </div>
+        </nav>
+        </div>
+    </header>
+    <!--================ End Header Menu Area =================-->
+
+
+    {%if not editar%}  
+    <section class="blog_area single-post-area py-80px section-margin--small">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 posts-list">
+                    <div class="comments-area">
+                        <h4>Biografía</h4>
+                        <div class="comment-list">
+                                <div class="single-comment justify-content-between d-flex">
+                                        <div class="user justify-content-between d-flex">
+                                            <p class="comment">
+                                                {{biografia}}
+                                            </p>
+                                        </div>
+                                </div>
+                        </div>
+                    </div>
+                    <br><br>
+                    <img src="static/emprendimiento/img/gallery/RecuerdaInver.png" width="730" alt="post">
+            </div>
+            <div class="col-lg-4">
+                <div class="blog_right_sidebar">
+                    <aside class="single_sidebar_widget author_widget"> 
+                        <img class="author_img rounded-circle" src="/static/images/inversionista/{{nombre_foto}}" width="210" height="200" alt="">
+                        <h4>{{nombre}}</h4>
+                        <p>Inversionista</p>
+                        <div class="social_icon">
+                        </div>
+                        <p>
+                            {{ciudad}}, {{pais}}<br>
+                            {{email}}
+                        </p>
+                        <br>
+                        <!--Boton Modificar la informacion general-->
+                        <!-- Button trigger modal -->
+                        <button class="button button-postComment button--active" type="button" data-toggle="modal" data-target="#updateInformacionGeneral" ><i class="fa fa-paper-plane"></i>
+                        Modificar Informacion
+                        </button>
+
+                        <div class="br"></div>
+                    </aside>
+                    
+                            <!-- Modal -->
+                            <div class="modal fade" id="updateInformacionGeneral" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Modifica tu información</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                <!--Boton Modificar la informacion general-->
+                                
+                                <!--POPUP: Form Modificar la informacion general-->
+                                    
+                                    <div class="container">
+                                            
+                                        <p>Modificar datos personales</p>
+                                            <form NAME="formIdInv" id="formIdInv" action="/perfilInversionista" method="POST" enctype="multipart/form-data">
+                                                <div class="field">
+                                                    <label class="" for="nombre">Nombre</label>
+                                                        <div class="control">
+                                                        <input required maxlength="100" pattern="[A-Za-z\s]+"  title="Por favor, utilice unicamente letras" type="text" name="nombre" id="nombre" value="{{nombre}}"><br>
+                                                    </div>
+                                                </div>
+                                                <div class="field">
+                                                    <label class="" for="fileToUpload">Foto de perfil: </label>
+                                                        <div class="control">
+                                                        <input type="file" name="fileToUpload" id="fileToUpload " accept="image/*"><br>
+                                                    </div>
+                                                </div>
+
+                                                <div class="field">
+                                                    <label class="" for="biografia">Biografia</label>
+                                                        <div class="control">
+                                                            <textarea type="textbox" required maxlength="200" name="biografia" id="biografia" cols="30" rows="10">{{biografia}}</textarea><br>
+                                                        </div>
+                                                </div>
+
+
+                                                <div class="field">
+                                                    <label class="" for="email">Email</label>
+                                                        <div class="control">
+                                                            <input type="email" required name="email" id="email" value="{{email}}"><br>
+                                                        </div>
+                                                </div>
+
+                                                <div class="field">
+                                                    <label class="" for="pais">País</label>
+                                                        <div class="control">
+                                                            <input type="text" required maxlength="100" pattern="[A-Za-z\s]+"  title="Por favor, utilice unicamente letras" name="pais" id="pais" value="{{pais}}"><br>
+                                                        </div>
+                                                </div>
+
+                                                <div class="field">
+                                                    <label class="" for="ciudad">Ciudad</label>
+                                                        <div class="control">
+                                                            <input type="text" required maxlength="100" pattern="[A-Za-z\s]+"  title="Por favor, utilice unicamente letras" name="ciudad" id="ciudad" value="{{ciudad}}"><br>
+                                                        </div>
+                                                </div>
+                                                <br>
+                                                <!--Aplicar cambios-->
+                                            <td><button type="submit" value= "Update" class="btn btn-primary">Actualizar</button></td>
+                                            <input type="hidden" name="formId" id="formId" value="2">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                        </form>   
+                
+                                    </div>
+                                    
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+
+
+
+                    <aside class="single_sidebar_widget popular_post_widget">
+                        <h3 class="widget_title">Intereses</h3>
+                        <div class="media post_item">
+                            <div class="media-body">
+                                {% for registro in interes %}
+                                    <table>
+                                        <tr>
+                                            <td><a><h3>{{registro["categoria"]}}</h3></a></td>
+                                            <td><a><h3>     </h3></a></td>
+                                            <td><a><h3>     </h3></a></td>
+                                            <td class="pull-left">
+                                                <form action="/perfilInversionista" method="POST">
+                                                    <button class="btn btn-cta-secondary pull-right" type="submit" value="delete"><h3>Borrar</h3></button>
+                                                    <input type="hidden" name="formId" id="formId" value="3">
+                                                    <input type="hidden" name="id" id="id" value="{{registro["id"]}}">
+                                                </form>
+                                            </td>
+                                            <br>
+                                        </tr>
+                                    </table>
+
+                                {% endfor %}
+                                <br>
+                                <p>{{message}}</p>
+                                
+                                <button class="button button-postComment button--active" type="button" data-toggle="modal" data-target="#agregarInteres" ><i class="fa fa-paper-plane"></i>
+                                Agregar interes
+                                </button>
+                            </div>
+                        </div>
+                    </aside>
+                    <br><br>
+                            <!-- Modal -->
+                            <div class="modal fade" id="agregarInteres" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Modifica tu información</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                <!--Boton Modificar la informacion general-->
+                                
+                                <!--POPUP: Form Modificar la informacion general-->
+
+                                    
+                                    <div class="container">
+                                            <form action="/perfilInversionista" method="POST">
+                                                {% for cat in categorias %}
+                                                    <input type="checkbox" name="{{cat["id"]}}" value="{{cat["id"]}}">
+                                                    <label for="{{cat["id"]}}">{{cat["categoria"]}}</label><br>
+                                                {% endfor %}
+                                                <input type="hidden" name="formId" id="formId" value="5">
+                                                <!--Aplicar cambios-->
+                                                <button type="submit" value="insert" class="btn btn-primary">Agregar</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                            </form>
+                                        </form>
+                                    </div>
+                                    
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+    {%endif%}
+
+    <br>
+    <footer class="footer">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row d-flex">
+                    <p class="col-lg-12 footer-text text-center">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> Fishing 2020 | An ocean full of great ideas <i class="fa fa-heart" aria-hidden="true"></i> by <a>Fishing</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                </div>
+            </div>
+        </div>
+    </footer><!--//footer-->
+
+    <!-- Javascript -->          
+    <script type="text/javascript" src="static/perfil/assets/plugins/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="static/perfil/assets/plugins/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="static/perfil/assets/plugins/bootstrap/js/bootstrap.min.js"></script>    
+    <script type="text/javascript" src="static/perfil/assets/plugins/jquery-rss/dist/jquery.rss.min.js"></script> 
+    <!-- github activity plugin -->
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js"></script>
+    <script type="text/javascript" src="http://caseyscarborough.github.io/github-activity/github-activity-0.1.0.min.js"></script>
+    <!-- custom js -->
+    <script type="text/javascript" src="static/perfil/assets/js/main.js"></script> 
+
+    <!-- Javascript control de errores --> 
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
+    <script src="static/assets/js/validation.js"></script>
+
+
+        <!--POPUP: bootstrap-->
+        <script type="text/javascript" src="static/perfil/assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+

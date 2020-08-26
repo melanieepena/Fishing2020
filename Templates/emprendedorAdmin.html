@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emprendedores</title>
+    <!--==========================Tabla==============================================================-->
+<link rel="icon" type="image/png" href="table/images/icons/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="static/table/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="static/table/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="static/table/vendor/animate/animate.css">
+<link rel="stylesheet" type="text/css" href="static/table/vendor/select2/select2.min.css">
+<link rel="stylesheet" type="text/css" href="static/table/css/util.css">
+<link rel="stylesheet" type="text/css" href="static/table/css/main.css">
+<!--==========================Estilo en general==============================================================-->
+<link rel="stylesheet" href="static/emprendimiento/vendors/bootstrap/bootstrap.min.css">
+<link rel="stylesheet" href="static/emprendimiento/vendors/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="static/emprendimiento/vendors/themify-icons/themify-icons.css">
+<link rel="stylesheet" href="static/emprendimiento/vendors/linericon/style.css">
+<link rel="stylesheet" href="static/emprendimiento/vendors/owl-carousel/owl.theme.default.min.css">
+<link rel="stylesheet" href="static/emprendimiento/vendors/owl-carousel/owl.carousel.min.css">
+<link rel="stylesheet" href="static/emprendimiento/css/style.css">
+<!--==========================Icono de barra==============================================================-->
+	<link rel="shortcut icon" href="static/t2/assets/ico/favicon.ico" type="image/x-icon" />
+	<link rel="apple-touch-icon" sizes="114x114" href="static/t2/assets/ico/apple-touch-icon-114x114.png" />
+	<link rel="apple-touch-icon" sizes="144x144" href="static/t2/assets/ico/apple-touch-icon-144x144.png" />
+	<link rel="apple-touch-icon" sizes="72x72" href="static/t2/assets/ico/apple-touch-icon-72x72.png" />
+	<link rel="apple-touch-icon" href="static/t2/assets/ico/apple-touch-icon.png" />
+<!--==========================Icono de barra==============================================================-->
+<!-- Javascript control de errores --> 
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
+    <script src="static/perfil/assets/js/validation.js"></script>
+    
+</head>
+{% block body %}
+<header class="header_area">
+    <div class="main_menu">
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+        <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+            <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
+                <li class="nav-item"><a class="nav-link" href="/Admin"><font size="2.5">Inicio</font></a></li>
+                <li class="nav-item"><a class="nav-link" href="/inversionistaAdmin"><font size="2.5">Inversionista</font></a></li>
+                <li class="nav-item"><a class="nav-link" href="/emprendedorAdmin"><font size="2.5">Emprendedor</font></a></li>
+                <li class="nav-item"><a class="nav-link" href="/productosAdmin"><font size="2.5">Producto</font></a></li>
+                <li class="nav-item"><a class="nav-link" href="/fundadoresAdmin"><font size="2.5">Fundador</font></a></li>
+                <li class="nav-item"><a class="nav-link" href="/EmprendimientoAdmin"><font size="2.5">Emprendimiento</font></a></li>
+                <li class="nav-item"><a class="nav-link" href="/categoriaAdmin"><font size="2.5">Categoría</font></a></li>
+                <li class="nav-item"><a class="nav-link" href="/agregarAdmin"><font size="2.5">Administrador</font></a></li>
+            </ul>
+            <ul class="nav-shop">
+            <li class="nav-item"><a class="button button-header" href="/cerrarSesion">Cerrar sesión</a></li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+    </div>
+</header>
+<div class="container h-1">
+    <br><br>
+    <div class="blog-banner">
+        <div class="text-center">
+            <h1>Emprendedores</h1>
+        </div>
+    </div>
+</div>
+
+{% if verdadero%}
+<section class="subscribe-position">
+    <div class="container">
+        <div class="subscribe text-center">
+            <h4>Modifica el emprendedor</h4>
+            <p>Llena todos los campos e ingrese una fotografía del emprendedor</p>
+            <br>
+            <div id="mc_embed_signup">
+                <div class="container">  
+                    <div align="center">          
+                        <div class="col-md-2 col-lg-10">
+                            <form class="form-contact contact_form" action="/emprendedorAdmin" method="POST" enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col-lg-5">
+                                        <div class="field">
+                                        <input class="form-control mb-1" placeholder="Nombre" value="{{nombre}}" type="text" name="nombre" id="nombre" maxlength="100" required pattern="[A-Za-z\s]+" title="Por favor, utilice unicamente letras">
+                                        <input class="form-control mb-1" placeholder="Correo Electrónico" value="{{email}}" name="email" id="email" type="email" required maxlength="150">
+                                        <input class="form-control mb-1" placeholder="Teléfono" value="{{telefono}}" type="number" name="telefono" id="telefono" required maxlength="25">
+                                        <input class="form-control mb-1" placeholder="País" value="{{pais}}" type="text" name="pais" id="pais" required maxlength="100" pattern="[A-Za-z\s]+" title="Por favor, utilice unicamente letras">
+                                        <input class="form-control mb-1" placeholder="Ciudad" value="{{ciudad}}" type="text" name="ciudad" id="ciudad" required maxlength="100" pattern="[A-Za-z\s]+" title="Por favor, utilice unicamente letras">
+                                        <br>
+                                        <input type="file" name="fileToUpload" id="fileToUpload" accept="image/*">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <div class="field">
+                                            <textarea class="form-control different-control w-100"  placeholder="Biografia" required maxlength="500" name="biografia" id="biografia" cols="30" rows="10">{{biografia}}</textarea>       
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group text-center text-md-right mt-3">
+                                    <input class="button button-header button--active" type="submit" value="Modificar">
+                                    <input type="hidden" name="formId" id="formId" value="4">
+                                    <input type="hidden" name="id" id="id" value="{{id}}">
+                                    <input type="hidden" name="userName" id="userName" value="{{userName}}">
+                                    
+                                </div>
+                            </form>
+                            <form action="/emprendedorAdmin">
+                                <input class="button button-header button--active pull-right" type="submit" value="Cancelar">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{%endif%}
+{% if not verdadero%}
+
+<section class="subscribe-position">
+    <div class="container">
+        <div class="subscribe text-center">
+            <h4>Inserta un emprendedor</h4>
+            <p>Llena todos los campos e ingrese una fotografía del emprendedor</p>
+            <br>
+            <div id="mc_embed_signup">
+                <div class="container">  
+                    <div align="center">          
+                        <div class="col-md-2 col-lg-10">
+                            <form class="form-contact contact_form" action="/emprendedorAdmin" method="POST" enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col-lg-5">
+                                        <div class="field">
+                                        <input class="form-control mb-1" placeholder="Nombre" type="text" name="nombre" id="nombre" maxlength="100" required pattern="[A-Za-z\s]+" title="Por favor, utilice unicamente letras" >
+                                        <input class="form-control mb-1" placeholder="Correo Electrónico" name="email" id="email" type="email" required maxlength="150">
+                                        <input class="form-control mb-1" placeholder="Número telefónico" type="number" name="telefono" id="telefono" required maxlength="25">
+                                        <input class="form-control mb-1" placeholder="Nombre de Usuario" type="text" name="userName" id="userName" required>
+                                        <input class="form-control mb-1" placeholder="Contraseña" type="password" name="password" id="password" required>
+                                        <input class="form-control mb-1" placeholder="País" type="text" name="pais" id="pais" required maxlength="100" pattern="[A-Za-z\s]+" title="Por favor, utilice unicamente letras">
+                                        <input class="form-control mb-1" placeholder="Ciudad" type="text" name="ciudad" id="ciudad" required maxlength="100" pattern="[A-Za-z\s]+" title="Por favor, utilice unicamente letras">
+                                        <br>
+                                        <input type="file" name="fileToUpload" id="fileToUpload" accept="image/*">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <div class="field">
+                                            <textarea class="form-control different-control w-100" name="biografia" placeholder="Biografía" id="biografia" cols="30" rows="10" required maxlength="500"></textarea>       
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group text-center text-md-right mt-3">
+                                    <input class="button button-header button--active" type="submit" value="Insertar">
+                                    <input type="hidden" name="formId" id="formId" value="1">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{%endif%}
+<br><br>
+<section class="subscribe-position">
+    <div class="container">
+        <div class="subscribe text-center">
+            <p style="color:red">{{message}}</p>
+            <br>
+            <div class="table100 ver5 m-b-110">
+                <div class="table100-body js-pscroll">
+                    <table>
+                        <tbody>
+                            <tr class="row100 head">
+                                <th >Id</th>
+                                <th >Nombre</th>
+                                <th>E-mail</th>
+                                <th>Telefono</th>
+                                <th>Id usuario</thclass=>
+                                <th>Pais</th>
+                                <th>Ciudad</thclass=>
+                                <th>Biografia</thclass=>
+                                <th>Foto</thclass=>
+                                <th>Borrar</thclass=>
+                                <th>Modificar</thclass=>
+                            </tr>
+                            {% for registro in data %}
+                            <tr class="row100 body">
+                                <td >{{registro["id"]}}</td>
+                                <td >{{registro["nombre"]}}</td>
+                                <td >{{registro["email"]}}</td>
+                                <td >{{registro["telefono"]}}</td>
+                                <td >{{registro["id_usuario"]}}</td>
+                                <td >{{registro["pais"]}}</td>
+                                <td >{{registro["ciudad"]}}</td>
+                                <td >{{registro["biografia"]}}</td>
+                                <td ><img src="static/images/emprendedor/{{registro["nombre_foto"]}}" height="50"/></td>
+                                <td >
+                                    <form action="/emprendedorAdmin" method="POST">
+                                        <button class="button button-header" type="submit" value="delete"><i class="far fa-trash-alt"></i>
+                                            Borrar
+                                        </button>
+                                        <input type="hidden" name="formId" id="formId" value="2">
+                                        <input type="hidden" name="id" id="id" value="{{registro["id"]}}">
+                                    </form>
+                                </td>
+                                <td >
+                                <form action="/emprendedorAdmin" id="formModificar" method="POST">
+                                    <input type="hidden" name="formId" id="formId" value="3">
+                                    <input type="hidden" name="id" id="id" value="{{registro["id"]}}">
+                                    <input type="hidden" name="nombre" id="nombre" value="{{registro["nombre"]}}">
+                                    <input type="hidden" name="email" id="email" value="{{registro["email"]}}">
+                                    <input type="hidden" name="telefono" id="telefono" value="{{registro["telefono"]}}">
+                                    <input type="hidden" name="id_usuario" id="id_usuario" value="{{registro["id_usuario"]}}">
+                                    <input type="hidden" name="pais" id="pais" value="{{registro["pais"]}}">
+                                    <input type="hidden" name="ciudad" id="ciudad" value="{{registro["ciudad"]}}">
+                                    <input type="hidden" name="biografia" id="biografia" value="{{registro["biografia"]}}">
+                                    <input type="hidden" name="nombre_foto" id="nombre_foto" value="{{registro["nombre_foto"]}}">
+                                    <button class="button button-header button--active" type="submit"></i>
+                                    Modificar
+                                    </button>
+                                </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br><br><br><br>
+<footer class="footer">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row d-flex">
+                    <p class="col-lg-12 footer-text text-center">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> Fishing 2020 | An ocean full of great ideas <i class="fa fa-heart" aria-hidden="true"></i> by <a>Fishing</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                </div>
+            </div>
+        </div>
+    </footer><!--//footer-->
+<!--POPUP: bootstrap-->
+    <script type="text/javascript" src="static/perfil/assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+<!--Tabla Scroll-->	
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="vendor/select2/select2.min.js"></script>
+	<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+	<script>
+		$('.js-pscroll').each(function(){
+			var ps = new PerfectScrollbar(this);
+			$(window).on('resize', function(){
+				ps.update();
+			})
+		});
+	</script>
+    
+	<script src="js/main.js"></script>
+{% endblock body %}
+
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--==========================Tabla==============================================================-->
+<link rel="icon" type="image/png" href="table/images/icons/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="static/table/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="static/table/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="static/table/vendor/animate/animate.css">
+<link rel="stylesheet" type="text/css" href="static/table/vendor/select2/select2.min.css">
+<link rel="stylesheet" type="text/css" href="static/table/css/util.css">
+<link rel="stylesheet" type="text/css" href="static/table/css/main.css">
+<!--==========================Estilo en general==============================================================-->
+<link rel="stylesheet" href="static/emprendimiento/vendors/bootstrap/bootstrap.min.css">
+<link rel="stylesheet" href="static/emprendimiento/vendors/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="static/emprendimiento/vendors/themify-icons/themify-icons.css">
+<link rel="stylesheet" href="static/emprendimiento/vendors/linericon/style.css">
+<link rel="stylesheet" href="static/emprendimiento/vendors/owl-carousel/owl.theme.default.min.css">
+<link rel="stylesheet" href="static/emprendimiento/vendors/owl-carousel/owl.carousel.min.css">
+<link rel="stylesheet" href="static/emprendimiento/css/style.css">
+<!--==========================Icono de barra==============================================================-->
+<link rel="shortcut icon" href="static/t2/assets/ico/favicon.ico" type="image/x-icon" />
+<link rel="apple-touch-icon" sizes="114x114" href="static/t2/assets/ico/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon" sizes="144x144" href="static/t2/assets/ico/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon" sizes="72x72" href="static/t2/assets/ico/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon" href="static/t2/assets/ico/apple-touch-icon.png" />
+<!--==========================Icono de barra==============================================================-->
+<!-- Javascript control de errores --> 
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
+<script src="static/perfil/assets/js/validation.js"></script>
+
+<title>Productos</title>
+
+</head>
+<body>
+<header class="header_area">
+    <div class="main_menu">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+            <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
+                    <li class="nav-item"><a class="nav-link" href="/Admin"><font size="2.5">Inicio</font></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/inversionistaAdmin"><font size="2.5">Inversionista</font></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/emprendedorAdmin"><font size="2.5">Emprendedor</font></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/productosAdmin"><font size="2.5">Producto</font></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/fundadoresAdmin"><font size="2.5">Fundador</font></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/EmprendimientoAdmin"><font size="2.5">Emprendimiento</font></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/categoriaAdmin"><font size="2.5">Categoría</font></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/agregarAdmin"><font size="2.5">Administrador</font></a></li>
+                </ul>
+                <ul class="nav-shop">
+                <li class="nav-item"><a class="button button-header" href="/cerrarSesion">Cerrar sesión</a></li>
+                </ul>
+            </div>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<div class="container h-1">
+    <br><br>
+    <div class="blog-banner">
+        <div class="text-center">
+            <h1>Productos</h1>
+        </div>
+    </div>
+</div>
+
+{%if not prductos%}
+<section class="subscribe-position">
+    <div class="container">
+        <div class="subscribe text-center">
+            <p style="color:red">{{message}}</p>
+            <div class="table100 ver5 m-b-110">
+                <div class="table100-head">
+                    <table>
+                        <thead>
+                            <tr class="row100 head">
+                                <th>Id</th>
+                                <th>Nombre del emprendimento</th> 
+                                <th>Producto</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="table100-body js-pscroll">
+                    <table>
+                        <tbody>
+
+                            {% for registro in datosx: %}
+                            <tr>
+                                <td>{{registro["id"]}}</td>
+                                <td>{{registro["nombre"]}}</td>
+                                <td>
+                                    <form action="/productosAdmin" method="POST">
+                                        <button class="button button-hero" type="submit" value="delete">Productos</button>
+                                        <input type="hidden" name="formId" id="formId" value="1">
+                                        <input type="hidden" name="id" id="id" value="{{registro["id"]}}">
+                                        <input type="hidden" name="name" id="name" value="{{registro["nombre"]}}">
+                                    </form>
+                                </td>
+                                
+                            </tr>            
+                        {%endfor%}
+
+                            {% for registro in data %}
+                            <tr class="row100 body">
+                                <td>{{registro["id"]}}</td>
+                                <td>{{registro["nombre"]}}</td>
+                                <td>
+                                    <form action="/productosAdmin" method="POST">
+                                        <button class="button button-hero" type="submit" value="delete">Mostrar sus productos</button>
+                                        <input type="hidden" name="formId" id="formId" value="1">
+                                        <input type="hidden" name="id" id="id" value="{{registro["id"]}}">
+                                        <input type="hidden" name="name" id="name" value="{{registro["nombre"]}}">
+                                    </form>
+                                </td>
+
+
+                                
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>        
+{%endif%}
+
+{%if prductos%}
+            <!--================================FORM INSERTAR==============================================================-->
+    {% if not mostrar %}
+        
+        <section class="subscribe-position">
+            <div class="container">
+                <div class="subscribe text-center">
+                    <h4>Insertar productos de {{name}}</h4>
+                    <p>Llena todos los campos e ingrese una fotografía de su producto o servicio</p>
+                    <div id="mc_embed_signup">
+                    <!-- ================ Form nuevoProducto  ================= -->
+                        <div class="container">  
+                            <div align="center">          
+                                <div class="col-md-2 col-lg-10">
+                                    <form class="form-contact contact_form" name="nuevoProducto" id="nuevoProducto" action="/productosAdmin" method="POST" enctype="multipart/form-data">
+                                        <div class="row">
+                                        <div class="col-lg-5">
+                                            <div class="field">
+                                                <input class="form-control mb-1" placeholder="Nombre" required maxlength="100" pattern="[A-Za-z\s]+" title="Por favor, utilice unicamente letras" type="text" id="nombre" name="nombre" required>
+                                            <input class="form-control mb-1" placeholder="Costo unitario"  pattern="\d+(\.\d{2})?" type="number" name="costoUnitario" id="costoUnitario" step="0.01" >
+                                            <input class="form-control mb-1" placeholder="Precio de venta"  pattern="\d+(\.\d{2})?" type="number" name="precioVenta" id="precioVenta" step="0.01">
+                                            <input class="form-control mb-1" placeholder="No. Patente:"  maxlength="20" type="number" name="patente" id="patente"required>
+                                            <br>
+                                            <input type="file" name="fileToUpload" id="fileToUpload" accept="image/*">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-7">
+                                            <div class="field">
+                                            <textarea class="form-control different-control w-100" required maxlength="300" placeholder="Descripción" name="descripcion" id="descripcion" cols="30" rows="10"></textarea>       
+                                            </div>
+                                        </div>
+                                        </div>
+                                        <div class="form-group text-center text-md-right mt-3">
+                                            <button class="button button-header button--active pull-right" type="submit" value="insert">Insertar</button>
+                                            <input type="hidden" name="formId" id="formId" value="2">
+                                            <input type="hidden" name="idEmpren" id="idEmpren" value="{{idEmpren}}">
+                                            <input type="hidden" name="name" id="name" value="{{name}}">
+                                        </div>
+                                    </form>
+                                </div> 
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+    <!--==============================================================================================-->
+
+
+    <!--================================FORM MODIFICAR=============================================================-->
+    {% if mostrar %}
+        <section class="subscribe-position">
+            <div class="container">
+                <div class="subscribe text-center">
+                <h4>Modifique el producto</h4><br><br>
+                <p>Llena todos los campos e ingrese una fotografía de su producto o servicio</p>
+                    <div id="mc_embed_signup">
+                    <!-- ================ Form nuevoProducto  ================= -->
+                        <div class="container">  
+                            <div align="center">          
+                                <div class="col-md-2 col-lg-10">
+                                    <form class="form-contact contact_form" name="nuevoProducto" id="nuevoProducto" action="/productosAdmin" method="POST" enctype="multipart/form-data">
+                                        <div class="row">
+                                        <div class="col-lg-5">
+                                            <div class="field">
+                                                <input class="form-control mb-1" placeholder="Nombre" required maxlength="100" pattern="[A-Za-z\s]+" title="Por favor, utilice unicamente letras" type="text" id="nombre" name="nombre" required value="{{data2["nombre"]}}">
+                                                <input class="form-control mb-1" placeholder="Costo unitario"  pattern="\d+(\.\d{2})?" type="number" name="costoUnitario" id="costoUnitario" value="{{data2["costo_unitario"]}}" step="0.01" >
+                                                <input class="form-control mb-1" placeholder="Precio de venta"  pattern="\d+(\.\d{2})?" type="number" name="precioVenta" id="precioVenta" value="{{data2["precio_venta"]}}" step="0.01">
+                                                <input class="form-control mb-1" placeholder="No. Patente:" required maxlength="20" type="number" name="patente" id="patente"required value="{{data2["patente"]}}">
+                                                <br>
+                                                <input type="file" name="fileToUpload" id="fileToUpload" accept="image/*">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-7">
+                                                <div class="field">
+                                                <textarea class="form-control different-control w-100" required maxlength="300" placeholder="Descripción" name="descripcion" id="descripcion" cols="30" rows="10"> {{data2["descripcion"]}} </textarea>       
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group text-center text-md-right mt-3">
+                                            <input class="button button-header button--active pull-right" type="submit" value="Modificar">
+                                            <input type="hidden" name="formId" id="formId" value="5">
+                                            <input type="hidden" name="id_producto" id="id_producto" value="{{data2["id_producto"]}}">
+                                            <input type="hidden" name="idEmpren" id="idEmpren" value="{{idEmpren}}">
+                                            <input type="hidden" name="name" id="name" value="{{name}}">
+                                        
+                                            
+                                            
+                                        </div>
+
+                                    </form>
+                                    <br><br>
+                                    <form action="/productosAdmin" method="GET">
+                                        <button class="button button-header button--active pull-right" type="submit" value="Cancelar">Cancelar</button>
+                                    </form>
+                                </div> 
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+        <!--==============================================================================================-->
+
+
+        <!--======================================TABLE===================================================-->
+    <section class="subscribe-position">
+        <div class="container">
+            <div class="subscribe text-center">
+                <p style="color:red">{{message}}</p>
+                <div class="table100 ver5 m-b-110">
+                    <div class="table100-body js-pscroll">
+                        <table>
+                            <tbody>
+                                <tr class="row100 head">
+                                    <th>Id</th>
+                                    <th>Nombre</th>
+                                    <th>Foto</th>
+                                    <th>Descripcion</th>
+                                    <th>Costo unitario</th>
+                                    <th>Precio de venta</th>
+                                    <th>No. Patente</th>
+                                    <th>Borrar</th>
+                                    <th>Modificar</th>
+                                </tr>
+                                {% for producto in datos: %}
+                                <tr>
+                                    <td>{{producto["id"]}}</td>
+                                    <td>{{producto["nombre"]}}</td>
+                                    <td><img src="/static/images/productos/{{producto["nombre_foto"]}}" width="125" alt=""></td>
+                                    <td>{{producto["descripcion"]}}</td>
+                                    <td>{{producto["costo_unitario"]}}</td>
+                                    <td>{{producto["precio_venta"]}}</td>
+                                    <td>{{producto["patente"]}}</td>
+                                    <td>
+                                        <form action="/productosAdmin" method="POST">
+                                            <button class="button button-header" type="submit" value="delete"><i class="far fa-trash-alt"></i>
+                                            Borrar
+                                            </button>
+                                            <input type="hidden" name="formId" id="formId" value="3">
+                                            <input type="hidden" name="id" id="id" value="{{producto["id"]}}">
+                                            <input type="hidden" name="idEmpren" id="idEmpren" value="{{idEmpren}}">
+                                            <input type="hidden" name="name" id="name" value="{{name}}">
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="/productosAdmin" method="POST">
+                                            <button class="button button-hero" type="submit" value="update">Modificar</button>
+                                            <input type="hidden" name="formId" id="formId" value="4">
+                                            <input type="hidden" name="id" id="id" value="{{producto["id"]}}">
+                                            <input type="hidden" name="idEmpren" id="idEmpren" value="{{idEmpren}}">
+                                            <input type="hidden" name="name" id="name" value="{{name}}">
+
+                                            <input type="hidden" name="id_producto" id="id_producto" value="{{producto["id"]}}">
+                                            <input type="hidden" id="nombre" name="nombre" value="{{producto["nombre"]}}">
+                                            <input type="hidden" name="nombre_foto" id="nombre_foto" value="{{producto["nombre_foto"]}}">
+                                            <input type="hidden" name="descripcion" id="descripcion" value="{{producto["descripcion"]}}">
+                                            <input type="hidden" name="costoUnitario" id="costoUnitario" value="{{producto["costo_unitario"]}}">
+                                            <input type="hidden" name="precioVenta" id="precioVenta" value="{{producto["precio_venta"]}}">
+                                            <input type="hidden" name="patente" id="patente" value="{{producto["patente"]}}">
+                                        </form>
+                                    </td>
+                                </tr>
+                                {%endfor%}
+                            </tbody>
+                        </table> 
+                    </div>
+                </div>
+                <br><br>
+                <form action="/productosAdmin" method="GET">
+                    <button class="button button-paypal" type="submit">Regresar</button>
+                </form>
+            </div>
+        </div>
+    </section>                                     
+    <!--======================================TABLE===================================================-->
+
+{%endif%}
+<br><br>
+
+</body>
+
+</html>

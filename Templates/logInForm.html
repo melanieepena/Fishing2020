@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fishing | Inicio sesión</title>
+
+	<!--Icono de barra-->
+	<link rel="shortcut icon" href="static/t2/assets/ico/favicon.ico" type="image/x-icon" />
+	<link rel="apple-touch-icon" sizes="114x114" href="static/t2/assets/ico/apple-touch-icon-114x114.png" />
+	<link rel="apple-touch-icon" sizes="144x144" href="static/t2/assets/ico/apple-touch-icon-144x144.png" />
+	<link rel="apple-touch-icon" sizes="72x72" href="static/t2/assets/ico/apple-touch-icon-72x72.png" />
+	<link rel="apple-touch-icon" href="static/t2/assets/ico/apple-touch-icon.png" />
+
+
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="static/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/css/util.css">
+	<link rel="stylesheet" type="text/css" href="static/css/main.css">
+<!--===============================================================================================-->
+    <!--==========================Icono de barra==============================================================-->
+	<link rel="shortcut icon" href="static/t2/assets/ico/favicon.ico" type="image/x-icon" />
+	<link rel="apple-touch-icon" sizes="114x114" href="static/t2/assets/ico/apple-touch-icon-114x114.png" />
+	<link rel="apple-touch-icon" sizes="144x144" href="static/t2/assets/ico/apple-touch-icon-144x144.png" />
+	<link rel="apple-touch-icon" sizes="72x72" href="static/t2/assets/ico/apple-touch-icon-72x72.png" />
+	<link rel="apple-touch-icon" href="static/t2/assets/ico/apple-touch-icon.png" />
+    <!--==========================Icono de barra==============================================================-->
+
+{% endblock head %}
+
+
+{% block body %}
+	
+
+	<div class="limiter">
+		
+        <div class="container-login100">
+            
+			<div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
+				<!--Form-->
+				<form class="login100-form validate-form" action="/logIn" method="POST">
+					<span class="login100-form-title p-b-55">
+						Inicia sesión 
+					</span>
+					<p style="color:red">{{messageSS}}</p>
+					<div class="wrap-input100 validate-input m-b-16" data-validate = "Valid email is required: ex@abc.xyz">
+						<input class="input100" type="text" required name="user" id="user" placeholder="Usuario">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<span class="lnr lnr-user"></span>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
+						<input class="input100" type="password" required name="password" id="password" placeholder="Contraseña">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<span class="lnr lnr-lock"></span>
+						</span>
+					</div>
+					<br>
+                    <p style="color: red;">{{message}}</p>
+                    <br>
+                    <div class="container-login100-form-btn p-t-25">
+						<button type="submit" value="Log in" class="login100-form-btn">
+							Ingresar
+						</button>
+					</div>
+
+					<div class="text-center w-full p-t-115">
+						<span class="txt1">
+							¿No tienes una cuenta?
+						</span>
+						<br>
+						<a class="txt1 bo1 hov1" href="/signUpInversor">
+							Regístrate como inversionista							
+						</a>
+						<br>
+						<a class="txt1 bo1 hov1" href="/signUpEmprendedor">
+							Regístrate como emprendedor							
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	
+
+	
+<!--===============================================================================================-->	
+	<script src="static/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="static/vendor/bootstrap/js/popper.js"></script>
+	<script src="static/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="static/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="static/js_login/main.js"></script>
+
+{% endblock body %}
+
+</html>

@@ -1,0 +1,426 @@
+{% block head %}
+    <title>Perfil emprendedor</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <link rel="stylesheet" href="static/emprendimiento/vendors/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="static/emprendimiento/vendors/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="static/emprendimiento/vendors/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="static/emprendimiento/vendors/linericon/style.css">
+    <link rel="stylesheet" href="static/emprendimiento/vendors/owl-carousel/owl.theme.default.min.css">
+    <link rel="stylesheet" href="static/emprendimiento/vendors/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="static/emprendimiento/css/style.css">
+
+    <!--==========================Icono de barra==============================================================-->
+    <link rel="shortcut icon" href="static/t2/assets/ico/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" sizes="114x114" href="static/t2/assets/ico/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="static/t2/assets/ico/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="static/t2/assets/ico/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" href="static/t2/assets/ico/apple-touch-icon.png" />
+    <!--==========================Icono de barra==============================================================-->
+    
+{% endblock head %}
+
+{% block body %}
+
+    <!--================ Start Header Menu Area =================-->
+    <header class="header_area">
+        <div class="main_menu">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+            <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
+                    <li class="nav-item"><a class="nav-link">FISHING | An ocean full of great ideas</a></li>
+                    <li class="nav-item"><a class="nav-link"></a></li>
+                    <li class="nav-item"><a class="nav-link"></a></li>
+                </ul>
+                <ul class="nav-shop">
+                <li class="nav-item"><a class="button button-header" href="/cerrarSesion">Cerrar sesión</a></li>
+                </ul>
+            </div>
+            </div>
+        </nav>
+        </div>
+    </header>
+    <!--================ End Header Menu Area =================-->
+
+    <section class="blog_area single-post-area py-80px section-margin--small">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 posts-list">
+                    <div class="comments-area">
+                        <h4>Biografía</h4>
+                        <div class="comment-list">
+                                <div class="single-comment justify-content-between d-flex">
+                                        <div class="user justify-content-between d-flex">
+                                            <p class="comment">
+                                                {{data[0]["biografia"]}}
+                                            </p>
+                                        </div>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="comment-form">
+                        <h4>Mis emprendimientos</h4>
+                        <table class="table">
+                            <tr>
+                                <th>Emprendimiento</th>
+                                <th>Ir</th>
+                                <th>Eliminar</th>
+                            </tr>
+                            
+                            {% for registro in dataEmprendimiento %}
+                            <tr>
+                            <td>{{registro["nombre"]}}</td>
+                            <td>
+                                <!--Boton "Ir"-->
+                                <form action="/emprendedorProfile" method="POST">
+                                    <button class="btn btn-cta-primary" type="submit" value="ir">Ir</button>
+                                    <input type="hidden" name="formId" id="formId" value="6">
+                                    <input type="hidden" name="id" id="id" value="{{registro["id"]}}">
+                                </form>
+                            </td>
+                            <td>
+                                <!--Boton "delete"-->
+                                <form action="/emprendedorProfile" method="POST">
+                                    <button class="btn btn-cta-primary" type="submit" value="delete">Eliminar</button>
+                                    <input type="hidden" name="formId" id="formId" value="5">
+                                    <input type="hidden" name="id" id="id" value="{{registro["id"]}}">
+                                </form>
+                            </td>
+                            {% endfor %}
+                        </table>
+                        
+                        <!--Boton crear nuevo emprendimiento-->             
+                        <button class="button button-postComment button--active" type="button" data-toggle="modal" data-target="#crearEmprendimiento" ><i class="fa fa-paper-plane"></i>
+                        Crear nuevo emprendimiento
+                        </button>
+                        
+                    </div>
+                    
+                    <div class="comment-form blog_right_sidebar">
+                    <aside class="single_sidebar_widget popular_post_widget">
+                        <h4>Notificaciones</h4>
+                        <div class="media post_item">
+                            <div class="">
+                                <table class="table">
+                                    <tr>
+                                        <th></th>
+                                        <th>Fecha</th>
+                                        <th>Hora</th>
+                                    </tr>     
+                                    {% for registro in data2 %}
+                                    <tr>
+                                    <td>{{registro["mensaje"]}}</td>
+                                    <td>{{registro["fecha"]}}</td>
+                                    <td>{{registro["hora"]}}</td>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        </div>         
+                    </aside>
+                    <br><br>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="blog_right_sidebar">
+                    <aside class="single_sidebar_widget author_widget"> 
+                        <img class="author_img rounded-circle" src="static/images/emprendedor/{{data[0]["nombre_foto"]}}" width="210" height="200" alt="">
+                        <h4>{{data[0]["nombre"]}}</h4>
+                        <p>Emprendedor</p>
+                        <div class="social_icon">
+                        </div>
+                        <p>
+                            {{data[0]["ciudad"]}}, {{data[0]["pais"]}}<br>
+                            {{data[0]["email"]}}<br>
+                            {{data[0]["telefono"]}}
+                        </p>
+                        <br>
+                        <!--Boton Modificar la informacion general-->
+                        <button class="button button-postComment button--active" type="button" data-toggle="modal" data-target="#modificarInformacion" ><i class="fa fa-paper-plane"></i>
+                        Modificar Información
+                        </button>
+                    </aside>
+                    
+                </div>
+                <br>
+                <div>
+                    <aside>
+                        <img class="card-img" src="static/emprendimiento/img/gallery/FishingPublicidad__1.png" width="700" alt="">
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <br>
+    <footer class="footer">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row d-flex">
+                    <p class="col-lg-12 footer-text text-center">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> Fishing 2020 | An ocean full of great ideas <i class="fa fa-heart" aria-hidden="true"></i> by <a>Fishing</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- POPUP: Modificar informacion -->
+    <div class="modal fade" id="modificarInformacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modifica tu información</h5>
+                    <button type="button" class="Cerrar" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <form NAME="formId" id="formId" action="/emprendedorProfile" method="POST" enctype="multipart/form-data">
+
+                            
+                            <div class="field">
+                                <label class="" for="nombre">Nombre</label>
+                                    <div class="control">
+                                        <input class="input" type="text"  id="nombre" name="nombre" value="{{data[0]["nombre"]}}" required maxlength="100" pattern="[A-Za-z\s]+" title="Por favor, utilice unicamente letras"><br>
+                                    </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="" for="email">Email</label>
+                                    <div class="control">
+                                        <input type="email" name="email" maxlength="150" required id="email" value="{{data[0]["email"]}}"> <br>
+                                    </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="" for="telefono">Telefono</label>
+                                    <div class="control">
+                                        <input type="number" maxlength="25" required  required name="telefono" id="telefono" value="{{data[0]["telefono"]}}"><br>
+                                    </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="" for="pais">País</label>
+                                    <div class="control">
+                                        <input type="text" name="pais" maxlength="100" pattern="[A-Za-z\s]+" title="Por favor, utilice unicamente letras" id="pais" required value="{{data[0]["pais"]}}"><br>
+                                    </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="" for="ciudad">Ciudad</label>
+                                    <div class="control">
+                                        <input type="text" name="ciudad" maxlength="100" pattern="[A-Za-z\s]+"  title="Por favor, utilice unicamente letras" id="ciudad" required value="{{data[0]["ciudad"]}}"><br>
+                                    </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="" for="biografia">Biografia</label>
+                                    <div class="control">
+                                        <br><textarea name="biografia" cols="30" required maxlength="500" rows="10" id="biografia">{{data[0]["biografia"]}}</textarea><br><br>
+                                    </div>
+                            </div>
+                            
+                            Foto 
+                            <br><input type="file" name="fileToUpload" id="fileToUpload" accept="image/*"><br><br><br>
+                            
+                            <!--Aplicar cambios-->
+                            <button type="submit" value="update" class="btn btn-primary">Aplicar cambios</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <input type="hidden" name="formId" id="formId" value="2" formnovalidate >
+                            <input type="hidden" name="id" id="id" value="{{data[0]["id"]}}" formnovalidate >
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+<!-- POPUP: Crear emprendimiento -->
+    <div class="modal fade" id="crearEmprendimiento" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modifica tu información</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    
+                <div class="container">
+                    <form action="/emprendedorProfile" name="crearEmp" id="crearEmp" method="POST" enctype="multipart/form-data">
+
+                        <div class="field">
+                            <label class="" for="estado">Estado:</label>
+                                <div class="control">
+                                    <select name="estado" id="estado">
+                                        <option value="Huevo">Huevo </option>
+                                        <option value="Pez Dorado">Pez dorado</option>
+                                        <option value="tiburon">Tiburón</option>
+                                    </select><br>
+                                </div>
+                            </div>
+
+                        <div class="field">
+                            <label class="" for="descripcion">Descripcion:</label>
+                                <div class="control">
+                                    <textarea name="descripcion" required maxlength="500" cols="30" rows="10" id="descripcion"></textarea><br>
+                                </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="" for="historia">Historia:</label>
+                                <div class="control">
+                                    <textarea name="historia" required maxlength="500" id="historia" cols="30" rows="10"></textarea><br>
+                                </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="" for="eslogan">Eslogan:</label>
+                                <div class="control">
+                                    <input type="text" required name="eslogan" maxlength="500" id="eslogan"><br>
+                                </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="" for="inversion_inicial">Inversion inicial:</label>
+                                <div class="control">
+                                    <input type="number" step="0.01" required name="inversion_inicial" id="inversion_inicial"><br>
+                                </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="" for="fecha_fundacion">Fecha de fundacion:</label>
+                                <div class="control">
+                                    <input type="date" required name="fecha_fundacion" id="fecha_fundacion"><br>
+                                </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="" for="venta_año_anterior">Venta de año anterior</label>
+                                <div class="control">
+                                    <input type="number" step="0.01" required name="venta_año_anterior" id="venta_año_anterior"><br>
+                                </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="" for="oferta_porcentaje">Porcentaje a ofertar:</label>
+                                <div class="control">
+                                    <input type="number" required min="1" max="100" name="oferta_porcentaje" id="oferta_porcentaje"><br>
+                                </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="" for="nombre">Nombre del emprendimiento:</label>
+                                <div class="control">
+                                    <input type="text" required maxlength="100" name="nombre"  id="nombre"><br><br>
+                                </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="" for="email">Email:</label>
+                                <div class="control">
+                                    <input type="email" required name="email" id="email"><br>
+                                </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="" for="telefono">Telefono:</label>
+                                <div class="control">
+                                    <input type="number" required name="telefono" id="telefono"><br>
+                                </div>
+                        </div>  
+
+                        <div class="field">
+                            <label class="" for="video">Video:</label>
+                                <div class="control">
+                                    <input type="url" name="video" id="video"><br>
+                                </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="" for="facebook">Facebook: </label>
+                                <div class="control">
+                                    <input type="url" maxlength="900" name="facebook" id="facebook"><br>
+                                </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="" for="instagram">Instagram:</label>
+                                <div class="control">
+                                    <input type="url" name="instagram" maxlength="900" id="instagram"><br>
+                                </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="" for="youtube">Youtube:</label>
+                                <div class="control">
+                                    <input type="url" name="youtube" maxlength="900" id="youtube"><br>
+                                </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="" for="fileToUpload">Foto:</label>
+                                <div class="control">
+                                    <input type="file" maxlength="900" name="fileToUpload" id="fileToUpload" accept="image/*"><br><br>
+                                </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="" for="eslogan">Categorías:</label>
+                                <div class="control">
+                                    {% for cat in categorias %}
+                                        <input type="checkbox" name="{{cat["id"]}}" value="{{cat["id"]}}">
+                                        <label for="{{cat["id"]}}">{{cat["categoria"]}}</label><br>
+                                    {% endfor %}
+                                </div>
+                        </div>
+                        <br>
+                        <!--Insertar emprendimiento-->
+                        <button type="submit" value="update" class="btn btn-primary">Crear emprendimiento</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <input type="hidden" name="formId" id="formId" value="4">
+                    </form>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+            
+
+
+
+
+    <!-- Javascript -->          
+    <script type="text/javascript" src="static/perfil/assets/plugins/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="static/perfil/assets/plugins/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="static/perfil/assets/plugins/bootstrap/js/bootstrap.min.js"></script>    
+    <script type="text/javascript" src="static/perfil/assets/plugins/jquery-rss/dist/jquery.rss.min.js"></script> 
+    <!-- github activity plugin -->
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js"></script>
+    <script type="text/javascript" src="http://caseyscarborough.github.io/github-activity/github-activity-0.1.0.min.js"></script>
+    <!-- custom js -->
+    <script type="text/javascript" src="static/perfil/assets/js/main.js"></script>
+    
+    <!-- Javascript control de errores --> 
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
+    <script src="static/assets/js/validation.js"></script>
+    
+    <!--POPUP: bootstrap-->
+    <script type="text/javascript" src="static/perfil/assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+
+{% endblock body %}
+
+</html>

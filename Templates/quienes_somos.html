@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Fundadores</title>
+
+	<link rel="stylesheet" href="static/emprendimiento/vendors/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" href="static/emprendimiento/vendors/fontawesome/css/all.min.css">
+	<link rel="stylesheet" href="static/emprendimiento/vendors/themify-icons/themify-icons.css">
+	<link rel="stylesheet" href="static/emprendimiento/vendors/linericon/style.css">
+	<link rel="stylesheet" href="static/emprendimiento/vendors/owl-carousel/owl.theme.default.min.css">
+	<link rel="stylesheet" href="static/emprendimiento/vendors/owl-carousel/owl.carousel.min.css">
+	<link rel="stylesheet" href="static/emprendimiento/css/style.css">
+</head>
+
+<body>
+	<!--================ Start Header Menu Area =================-->
+	<header class="header_area">
+		<div class="main_menu">
+			<nav class="navbar navbar-expand-lg navbar-light">
+				<div class="container">
+					<a class="navbar-brand logo_h" href="index.html"><img src="" alt=""></a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse"
+						data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+						aria-expanded="false" aria-label="Toggle navigation">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+						<ul class="nav navbar-nav menu_nav ml-auto mr-auto">
+							{% if vistaEmprendimiento %}
+							<li class="nav-item active"><a class="nav-link"
+									href="/emprendimientoInicioInversionista">Inicio</a></li>
+							{%endif%}
+							{% if not vistaEmprendimiento %}
+							<li class="nav-item active"><a class="nav-link" href="/emprendimientoInicio">Inicio</a></li>
+							{%endif%}
+							{% if not vistaEmprendimiento %}
+							<li class="nav-item active"><a class="nav-link" href="/quienes_somos">Historia</a></li>
+							{%endif%}
+							{% if vistaEmprendimiento %}
+							<li class="nav-item active"><a class="nav-link" href="/quienes_somosInv">Historia</a></li>
+							{%endif%}
+							{% if not vistaEmprendimiento %}
+							<li class="nav-item active"><a class="nav-link" href="/registroProductos">Productos</a></li>
+							{%endif%}
+							{% if vistaEmprendimiento %}
+							<li class="nav-item active"><a class="nav-link" href="/registroProductosInv">Productos</a>
+							</li>
+							{%endif%}
+							{% if not vistaEmprendimiento %}
+							<li class="nav-item active"><a class="nav-link" href="/informacion">Información</a></li>
+							{%endif%}
+							{% if vistaEmprendimiento %}
+							<li class="nav-item active"><a class="nav-link" href="/infoEmprendimiento">Información</a>
+							</li>
+							{%endif%}
+						</ul>
+
+						<ul class="nav-shop">
+							{% if not vistaEmprendimiento %}
+							<li class="nav-item"><a class="button button-header" href="emprendedorProfile">Volver a mi
+									perfil</a></li>
+							{%endif%}
+							{% if vistaEmprendimiento %}
+							<li class="nav-item"><a class="button button-header" href="/InicioInv">Volver al inicio</a>
+							</li>
+							{%endif%}
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</header>
+	<!--================ End Header Menu Area =================-->
+	<!-- ================ start banner area ================= -->
+	<div class="container h-1">
+		<br><br>
+		<div class="blog-banner">
+			<div class="text-center">
+				<h1>Historia - fundadores</h1>
+			</div>
+		</div>
+	</div>
+	<!-- ================ end banner area ================= -->
+
+	<!--================Blog Area =================-->
+	<section class="blog_area single-post-area py-80px section-margin--small">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 posts-list">
+					<div class="single-post row">
+						<div class="col-lg-12">
+							<div class="feature-img">
+								<img class="img-fluid" src="static/emprendimiento/img/blog/banner.jpg" alt="">
+							</div>
+						</div>
+
+						<div class="col-lg-15 col-md-15 blog_details">
+							<h2>¿Cómo nació esta idea de negocios?</h2>
+							<p class="excert">
+							<form action="/quienes_somos" method="POST">
+								{% for registro in data2 %}
+								<p>{{registro["historia"]}}</p>
+								{% endfor %}
+								<br>
+								{% if not vistaEmprendimiento %}
+								<textarea class="form-control different-control w-100" name="historia" rows="10"
+									cols="100">Escribe aquí tu historia</textarea>
+								<br><br><button type="submit" value="insert"
+									class="button button-postComment button--active"> Modificar</button>
+								<input type="hidden" name="formId" id="formId" value="3">
+								{% endif %}
+							</form>
+							</p>
+						</div>
+
+					</div>
+
+					{% if not vistaEmprendimiento %}
+					<div class="comment-form">
+						<h3>Agregar fundadores</h3>
+						<p style="color:red">{{message}}</p>
+
+						<form action="/quienes_somos" method="POST">
+							<br>
+							<p>Si desea ingresar un nuevo fundador al emprendimiento ingrese el usuario</p>
+
+							<label for="user">Usuario:</label>
+							<br><input type="text" id="user" name="user">
+							<input type="hidden" name="formId" id="formId" value="1">
+							<br><br>
+							<button type="submit" value="Insertar" class="button button-postComment button--active">
+								Insertar</button>
+
+						</form>
+					</div>
+					{% endif %}
+
+					<div class="comments-area">
+						<h3>Fundadores</h3>
+						{% for registro in data %}
+						<br><br>
+						<div class="comment-list">
+							<div class="single-comment justify-content-between d-flex">
+								<div class="user justify-content-between d-flex">
+									<div class="thumb">
+										<img src="/static/images/emprendedor/{{registro["nombre_foto"]}}" width="125"
+											alt="">
+									</div>
+									<div class="desc">
+										<h5>
+											<a>{{registro["nombre"]}}</a>
+										</h5>
+										<p class="date">Fun</p>
+										<p class="comment">
+											{{registro["biografia"]}}
+										</p>
+									</div>
+								</div>
+								<div class="reply-btn">
+
+									{% if not vistaEmprendimiento %}
+										{% if not registro["borrar"] %}
+											<form action="/quienes_somos" method="POST">
+												<button type="submit" value="delete"
+													class="button button-postComment button--active"> Borrar</button>
+												<input type="hidden" name="formId" id="formId" value="2">
+												<input type="hidden" name="id" id="id" value="{{registro["id"]}}">
+											</form>
+										{% endif %}
+									{% endif %}
+
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+
+					</div>
+				</div>
+
+				<div class="col-lg-4">
+					<div class="blog_right_sidebar">
+						<aside class="single_sidebar_widget author_widget">
+							<div class="social_icon">
+							</div>
+
+						</aside>
+
+						<aside class="single_sidebar_widget popular_post_widget">
+							<h3 class="widget_title">Conoce historias de éxito en Fishing</h3>
+							<p>Descubre nuestro compromiso por el éxito de nuestros usuarios:</p>
+
+							<div class="media post_item">
+								<img src="static/emprendimiento/img/blog/popular-post/post1.jpg" width="150" height="90"
+									alt="post">
+								<div class="media-body">
+									<h3>Grace & Lace</h3>
+									<a href="https://www.graceandlace.com/" target="_blank">
+										<p>Visita su página</p>
+									</a>
+
+								</div>
+							</div>
+							<div class="br"></div>
+							<div class="media post_item">
+								<img src="static/emprendimiento/img/blog/popular-post/post2.jpg" width="150" height="90"
+									alt="post">
+								<div class="media-body">
+									<h3>Wicked Good Cupcakes</h3>
+									<a href="https://www.wickedgoodcupcakes.com/" target="_blank">
+										<p>Visita su página</p>
+									</a>
+
+								</div>
+							</div>
+							<div class="br"></div>
+							<div class="media post_item">
+								<img src="static/emprendimiento/img/blog/popular-post/post3.jpg" width="150" height="90"
+									alt="post">
+								<div class="media-body">
+									<h3>The Red Dress Boutique</h3>
+									<a href="https://www.reddress.com/" target="_blank">
+										<p>Visita su página</p>
+									</a>
+
+								</div>
+							</div>
+							<div class="br"></div>
+							<div class="media post_item">
+								<img src="static/emprendimiento/img/blog/popular-post/post4.jpg" width="150" height="90"
+									alt="post">
+								<div class="media-body">
+									<h3>Bombas</h3>
+									<a href="https://bombas.com/" target="_blank">
+										<p>Visita su página</p>
+									</a>
+
+								</div>
+							</div>
+							<div class="br"></div>
+							<div class="media post_item">
+								<img src="static/emprendimiento/img/blog/popular-post/post5.jpg" width="150" height="90"
+									alt="post">
+								<div class="media-body">
+									<h3>Simple Sugars</h3>
+									<a href="https://www.simplesugarsskincare.com/" target="_blank">
+										<p>Visita su página</p>
+									</a>
+
+								</div>
+							</div>
+							<div class="br"></div>
+							<div class="media post_item">
+								<img src="static/emprendimiento/img/blog/popular-post/post6.png" width="150" height="90"
+									alt="post">
+								<div class="media-body">
+									<h3>GrooveBook</h3>
+									<a href="https://www.groovebook.com/" target="_blank">
+										<p>Visita su página</p>
+									</a>
+
+								</div>
+							</div>
+							<div class="br"></div>
+						</aside>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================Blog Area =================-->
+
+	<br><br><br><br>
+
+	<!--================ Start footer Area  =================-->
+	{% for registro in data3 %}
+	<footer class="footer">
+		<div class="footer-area">
+			<div class="container">
+				<div class="row section_gap">
+					<div class="col-lg-3 col-md-6 col-sm-6">
+						<div class="single-footer-widget tp_widgets">
+							<h4 class="footer_title large_title">Descripcion</h4>
+							{% for registro in data4 %}
+							<p>
+								{{registro["descripcion"]}}
+							</p>
+							{% endfor %}
+						</div>
+					</div>
+					<div class="offset-lg-1 col-lg-2 col-md-6 col-sm-6">
+						<div class="single-footer-widget tp_widgets">
+							<h4 class="footer_title">Redes sociales</h4>
+							<ul class="list">
+								{% if facebook != None %}
+								<li><a href="{{registro["facebook"]}}" target="_blank">Facebook</a></li>
+								{% endif %}
+								{% if instagram != None %}
+								<li><a href="{{registro["instagram"]}}" target="_blank">Instagram</a></li>
+								{% endif %}
+								{% if instagram != None %}
+								<li><a href="{{registro["youtube"]}}" target="_blank">Youtube</a></li>
+								{% endif %}
+							</ul>
+						</div>
+					</div>
+					<div class="offset-lg-1 col-lg-3 col-md-6 col-sm-6">
+						<div class="single-footer-widget tp_widgets">
+							<h4 class="footer_title">Contact Us</h4>
+							<div class="ml-40">
+
+								<p class="sm-head">
+									<span class="fa fa-phone"></span>
+									Numero de telefono
+								</p>
+								<p>
+									{{registro["telefono"]}}
+								</p>
+
+								<p class="sm-head">
+									<span class="fa fa-envelope"></span>
+									Email
+								</p>
+								<p>
+									{{registro["email"]}}
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="row d-flex">
+					<p class="col-lg-12 footer-text text-center">
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						Copyright &copy;
+						<script>document.write(new Date().getFullYear());</script> Fishing 2020 | An ocean full of great
+						ideas <i class="fa fa-heart" aria-hidden="true"></i> by <a>Fishing</a>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	{% endfor %}
+	<!--================ End footer Area  =================-->
+
+
+	<script src="static/emprendimiento/vendors/jquery/jquery-3.2.1.min.js"></script>
+	<script src="static/emprendimiento/vendors/bootstrap/bootstrap.bundle.min.js"></script>
+	<script src="static/emprendimiento/vendors/skrollr.min.js"></script>
+	<script src="static/emprendimiento/vendors/owl-carousel/owl.carousel.min.js"></script>
+	<script src="static/emprendimiento/vendors/nice-select/jquery.nice-select.min.js"></script>
+	<script src="static/emprendimiento/vendors/jquery.ajaxchimp.min.js"></script>
+	<script src="static/emprendimiento/vendors/mail-script.js"></script>
+	<script src="static/emprendimiento/js/main.js"></script>
+
+
+
+</html>
