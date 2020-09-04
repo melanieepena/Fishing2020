@@ -212,7 +212,7 @@
                 <div class="col-md-6 col-lg-7">
                     <div class="card text-center card-product">
                         <div class="card-product__img">
-                            <br><img class="card-img" src="/static/images/productos/{{registro["nombre_foto"]}}" width="250" height="250" alt="">
+                            <br><img class="card-img" src="/static/images/productos/{{registro["nombre_foto"]}}" width="100" alt="">
                             {% if vistaEmprendimiento %} <!--Guardar-->
                               <ul class="card-product__imgOverlay">
                                 <form action="/guardar" method="POST">
@@ -342,7 +342,7 @@
                   {% if instagram != None %}
                       <li><a href="{{registro["instagram"]}}" target="_blank">Instagram</a></li>
                   {% endif %}
-                  {% if instagram != None %}
+                  {% if youtube != None %}
                       <li><a href="{{registro["youtube"]}}" target="_blank">Youtube</a></li>
                   {% endif %}
               </ul> 

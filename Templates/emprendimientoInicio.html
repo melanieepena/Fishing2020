@@ -87,29 +87,30 @@
         <!--================ Hero banner start =================-->
         {% for registro in data %}
             <section class="hero-banner">
-            <div class="container">
-                <div class="row no-gutters align-items-center pt-60px">
-                <div class="col-5 d-none d-sm-block">
-                    <div class="hero-banner__img">
-                    <!--FOTILLO-->
-                    <img class="img-fluid" src="/static/images/emprendimiento/{{registro["nombre_foto"]}}" alt="">
+                <div class="container">
+                    <div class="row no-gutters align-items-center pt-60px">
+                        <div class="col-5 d-none d-sm-block">
+                            <div class="hero-banner__img">
+                                <!--FOTILLO-->
+                                <img class="img-fluid" src="/static/images/emprendimiento/{{registro["nombre_foto"]}}" alt="">
+                            </div>
+                        </div>
+                        <div class="col-sm-7 col-lg-6 offset-lg-1 pl-4 pl-md-5 pl-lg-0">
+                            <div class="hero-banner__content">
+                                <h4>{{registro["eslogan"]}}</h4>
+                                <h1>{{registro["nombre"]}}</h1>
+                                <p>{{registro["descripcion"]}}</p>
+                                {% if not vistaEmprendimiento %}
+                                <a class="button button-hero" href="/registroProductos">Revisa tus productos</a>
+                                {%endif%}
+                                {% if vistaEmprendimiento %}
+                                <a class="button button-hero" href="/registroProductosInv">Conoce nuestros productos</a>
+                                {%endif%}
+                                <br><br><br><br>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-sm-7 col-lg-6 offset-lg-1 pl-4 pl-md-5 pl-lg-0">
-                    <div class="hero-banner__content">
-                    <h4>{{registro["eslogan"]}}</h4>
-                    <h1>{{registro["nombre"]}}</h1>
-                    <p>{{registro["descripcion"]}}</p>
-                    {% if not vistaEmprendimiento %}
-                    <a class="button button-hero" href="/registroProductos">Revisa tus productos</a>
-                    {%endif%}
-                    {% if vistaEmprendimiento %}
-                    <a class="button button-hero" href="/registroProductosInv">Conoce nuestros productos</a>
-                    {%endif%}
-                    </div>
-                </div>
-                </div>
-            </div>
             </section>
             <!--================ Hero banner start =================-->
             <br><br>
@@ -240,7 +241,7 @@
                                         {% if instagram != None %}
                                             <li><a href="{{registro["instagram"]}}" target="_blank">Instagram</a></li>
                                         {% endif %}
-                                        {% if instagram != None %}
+                                        {% if youtube != None %}
                                             <li><a href="{{registro["youtube"]}}" target="_blank">Youtube</a></li>
                                         {% endif %}
                                     </ul> 

@@ -156,7 +156,7 @@
 										<h5>
 											<a>{{registro["nombre"]}}</a>
 										</h5>
-										<p class="date">Fun</p>
+										<p class="date"></p><br>
 										<p class="comment">
 											{{registro["biografia"]}}
 										</p>
@@ -299,14 +299,14 @@
 							<h4 class="footer_title">Redes sociales</h4>
 							<ul class="list">
 								{% if facebook != None %}
-								<li><a href="{{registro["facebook"]}}" target="_blank">Facebook</a></li>
-								{% endif %}
-								{% if instagram != None %}
-								<li><a href="{{registro["instagram"]}}" target="_blank">Instagram</a></li>
-								{% endif %}
-								{% if instagram != None %}
-								<li><a href="{{registro["youtube"]}}" target="_blank">Youtube</a></li>
-								{% endif %}
+                                    <li><a href="{{registro["facebook"]}}" target="_blank">Facebook</a></li>
+                                {% endif %}
+                                {% if instagram != None %}
+                                    <li><a href="{{registro["instagram"]}}" target="_blank">Instagram</a></li>
+                                {% endif %}
+                                {% if youtube != None %}
+                                    <li><a href="{{registro["youtube"]}}" target="_blank">Youtube</a></li>
+                                {% endif %}
 							</ul>
 						</div>
 					</div>
